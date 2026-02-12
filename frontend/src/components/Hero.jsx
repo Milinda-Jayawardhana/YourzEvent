@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { assets } from '../assets/assets'; // adjust path if needed
 
 const Hero = () => {
   const sliderImages = [
-    assets.slide1,  // add your images here
-    assets.slide2,
-    assets.slide3,
-    assets.slide4,
+    '/s1.jpeg',
+    '/s2.jpeg',
+    '/s3.jpeg',
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);

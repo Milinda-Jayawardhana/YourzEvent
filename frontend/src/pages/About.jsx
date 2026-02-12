@@ -12,31 +12,41 @@ const About = () => {
 
       <div className='my-10 flex flex-col md:flex-row gap-16'>
         <img className='w-full md:max-w-[450px]' src={assets.about_img} alt="About Us" />
-        
+
         <div className='flex flex-col justify-center gap-6 md:w-2/4 text-gray-600'>
-          
+
           <h2 className='text-xl font-semibold text-gray-800'>Who We Are</h2>
           <p>
-            We are your trusted destination for high-quality electronic components,
-            modules, development boards, sensors, tools, and accessories. Whether you
-            are a hobbyist, student, or professional engineer, we provide the products
-            you need to bring your electronic projects to life.
+            YourzEvents is a Dubai-based event planning and floral design
+            service, specializing in creating unforgettable experiences through
+            thoughtful design, seamless coordination, and elegant blooms.
+            From intimate celebrations to large-scale corporate and social
+            events, we bring visions to life with creativity, precision, and a
+            deep understanding of style and detail. Our floral designs are
+            curated to elevate every space, whether it’s a wedding, brand
+            launch, private party, or bespoke celebration. At YourzEvents, we
+            believe every event should feel personal, purposeful, and
+            beautifully executed. From concept to completion, we handle
+            every detail so our clients can simply enjoy the moment.
           </p>
 
           <h2 className='text-xl font-semibold text-gray-800'>Our Mission</h2>
           <p>
-            Our mission is to make electronics accessible and affordable for everyone.
-            We aim to support innovation by offering reliable components, fast
-            delivery, and a seamless online shopping experience. We help creators,
-            learners, and professionals build the future—one component at a time.
+            Our mission at YourzEvents is to bring
+            our clients’ visions to life through
+            thoughtfully curated event design and
+            floral artistry. We create seamless,
+            personalized experiences by
+            combining creativity, precision, and
+            refined aesthetics
           </p>
 
           <h2 className='text-xl font-semibold text-gray-800'>Our Vision</h2>
           <p>
-            We envision becoming a globally trusted electronics supplier known for
-            quality, affordability, and exceptional service. Our goal is to empower
-            engineers and innovators to explore technology with confidence and build
-            smarter, more sustainable solutions.
+            To become a leading event styling and
+            floral design brand in Dubai and
+            beyond, through timeless design and
+            emotional storytelling
           </p>
         </div>
       </div>
