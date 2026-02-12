@@ -32,18 +32,18 @@ const Contact = () => {
       'service_bmwxgww', // Replace with your EmailJS service ID
       'template_tbyz2d8', // Replace with your EmailJS template ID
       form.current,
-      'INIKYQWseQGwbV8y8' 
+      'INIKYQWseQGwbV8y8'
     )
-    .then((result) => {
-      console.log('Email sent successfully:', result.text);
-      setLoading(false);
-      setStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, (error) => {
-      console.error('Failed to send email:', error.text);
-      setLoading(false);
-      setStatus('error');
-    });
+      .then((result) => {
+        console.log('Email sent successfully:', result.text);
+        setLoading(false);
+        setStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      }, (error) => {
+        console.error('Failed to send email:', error.text);
+        setLoading(false);
+        setStatus('error');
+      });
   };
 
   return (
@@ -54,13 +54,13 @@ const Contact = () => {
           We'd love to hear from you! Whether you have a question about our products, orders, or anything else, our team is ready to answer all your inquiries.
         </p>
       </div>
-      
+
       {/* Contact Info and Form Section */}
       <div className='my-10 flex flex-col justify-center md:flex-row gap-10 mb-28 px-4 max-w-6xl mx-auto'>
         {/* Left side - Store info and image */}
         <div className="w-full md:w-1/2 flex flex-col gap-6">
-          <img className='w-full rounded-lg shadow-md' src={assets.contact_img} alt="Our Store" />
-          
+          <img src="/s5.jpeg" alt="Logo1" className='w-full rounded-lg shadow-md' />
+
           <div className='bg-white p-6 rounded-lg shadow-md'>
             <h2 className='font-semibold text-xl text-gray-800 border-b pb-3 mb-4'>Visit Our Store</h2>
             <div className='flex flex-col gap-4'>
@@ -75,7 +75,7 @@ const Contact = () => {
                   Pitipana, Homagama,<br />
                 </p>
               </div>
-              
+
               <div className='flex items-start gap-3'>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-600 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -85,7 +85,7 @@ const Contact = () => {
                   +971 58 304 8569
                 </p>
               </div>
-              
+
               <div className='flex items-start gap-3'>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-600 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -95,22 +95,22 @@ const Contact = () => {
                   yourzevents1@gmail.com
                 </p>
               </div>
-              
+
               <div className='flex items-start gap-3'>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-600 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <p className='text-gray-600'>
                   <span className='font-medium'>Working Hours:</span><br />
-                  24 Hours 
+                  24 Hours
                 </p>
               </div>
             </div>
           </div>
-          
-      
+
+
         </div>
-        
+
         {/* Right side - Contact form */}
         <div className="w-full md:w-1/2">
           <div className="bg-white p-6 rounded-lg shadow-md">
@@ -128,7 +128,7 @@ const Contact = () => {
                   required
                 />
               </div>
-              
+
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
                 <input
@@ -141,7 +141,7 @@ const Contact = () => {
                   required
                 />
               </div>
-              
+
               <div>
                 <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">Subject</label>
                 <input
@@ -154,7 +154,7 @@ const Contact = () => {
                   required
                 />
               </div>
-              
+
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
                 <textarea
@@ -167,7 +167,7 @@ const Contact = () => {
                   required
                 ></textarea>
               </div>
-              
+
               <button
                 type="submit"
                 disabled={loading}
@@ -183,68 +183,69 @@ const Contact = () => {
                   </>
                 ) : 'Send Message'}
               </button>
-              
+
               {status === 'success' && (
                 <div className="mt-3 p-3 bg-green-100 text-green-700 rounded-md">
                   Thank you for your message! We'll get back to you soon.
                 </div>
               )}
-              
+
               {status === 'error' && (
                 <div className="mt-3 p-3 bg-red-100 text-red-700 rounded-md">
                   Failed to send message. Please try again later or contact us directly.
                 </div>
               )}
             </form>
-            
+
           </div>
           <div>
-              <div className="my-6"></div>
-          
+            <div className="my-6"></div>
+
           </div>
 
-              {/* Social Media Icons */}
-              <div className="bg-white p-6 rounded-lg shadow-md">
+          {/* Social Media Icons */}
+          <div className="bg-white p-6 rounded-lg shadow-md">
             <h2 className='font-semibold text-xl text-gray-800 border-b pb-3 mb-4'>Connect With Us</h2>
             <div className="flex gap-4">
-              <a href="https://www.facebook.com/share/17hor2vzhG/" target="_blank" rel="noopener noreferrer" className="bg-gray-100 p-3 rounded-full hover:bg-blue-100 transition-colors">
+              <a href="https://www.facebook.com/share/1K6z5Pcd6a/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="bg-gray-100 p-3 rounded-full hover:bg-blue-100 transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-700">
                   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                 </svg>
               </a>
               {/* Gmail Icon */}
-<a
-  href="https://mail.google.com/mail/?view=cm&fs=1&to=mechatroniclk@gmail.com"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Gmail"
-  className="text-gray-600 hover:text-red-600 transition-colors"
->
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    width="20" 
-    height="20" 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round"
-  >
-    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-    <polyline points="22,6 12,13 2,6" />
-  </svg>
-</a>
+              <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=yourzevents1@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Gmail"
+                className="bg-gray-100 p-3 rounded-full hover:bg-red-100 transition-colors"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-gray-700"
+                >
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+              </a>
 
-           
+
             </div>
           </div>
-          
-       
+
+
         </div>
-        
+
       </div>
-      
+
       {/* FAQ Section */}
       <div className="bg-white py-10 px-4">
         <div className="max-w-4xl mx-auto">
@@ -276,8 +277,8 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      
-      <NewsLetterBox/>
+
+      <NewsLetterBox />
     </div>
   )
 }
