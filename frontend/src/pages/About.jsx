@@ -58,33 +58,36 @@ const About = () => {
       <div className='flex flex-col md:flex-row text-sm mb-20'>
 
         <div className='border px-10 md:px-16 py-8 sm:py-20 flex flex-col gap-5'>
-          <b>Trusted Quality Components :</b>
+          <b>Fresh & Premium Quality Flowers :</b>
           <p className='text-gray-600'>
-            We provide only authentic and reliable components sourced from reputable
-            manufacturers. Every product is carefully inspected to ensure it meets
-            industry standards—giving you the confidence to build robust and durable
-            electronic solutions.
+            We provide only fresh, handpicked flowers sourced from trusted growers and
+            premium farms. Every bouquet is carefully arranged by skilled florists to
+            ensure beauty, fragrance, and long-lasting freshness—giving you the confidence
+            to gift unforgettable moments.
           </p>
+
         </div>
 
         <div className='border px-10 md:px-16 py-8 sm:py-20 flex flex-col gap-5'>
-          <b>Convenience & Fast Delivery :</b>
+          <b>Convenient Ordering & Fast Delivery :</b>
           <p className='text-gray-600'>
-            Our website is designed to make component shopping simple and fast. With
-            clear product descriptions, easy navigation, and speedy shipping, you can
-            get the parts you need without delays—perfect for urgent projects and
-            deadlines.
+            Our website is designed to make flower shopping simple and delightful. With
+            beautiful bouquet previews, easy ordering, and reliable same-day or scheduled
+            delivery, you can send fresh flowers right on time—perfect for surprises,
+            celebrations, and special moments.
           </p>
+
         </div>
 
         <div className='border px-10 md:px-16 py-8 sm:py-20 flex flex-col gap-5'>
-          <b>Expert Customer Support :</b>
+          <b>Friendly Customer Support :</b>
           <p className='text-gray-600'>
-            Our technical support team is always ready to help—whether you need
-            assistance choosing the right microcontroller, checking compatibility, or
-            tracking your order. We are committed to providing friendly and reliable
-            support to make your experience smooth and worry-free.
+            Our support team is always ready to help—whether you need assistance choosing
+            the perfect bouquet, customizing an arrangement, or tracking your delivery.
+            We are committed to providing warm, reliable service to make your gifting
+            experience smooth and worry-free.
           </p>
+
         </div>
 
       </div>

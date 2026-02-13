@@ -51,7 +51,7 @@ const Contact = () => {
       <div className='text-center text-2xl pt-10 border-t'>
         <Title text1={'CONTACT'} text2={'US'} />
         <p className="text-gray-600 max-w-2xl mx-auto mt-4 px-4">
-          We'd love to hear from you! Whether you have a question about our products, orders, or anything else, our team is ready to answer all your inquiries.
+          We’d love to hear from you! Whether you have a question about our bouquets, deliveries, custom arrangements, or anything else, our team is always ready to assist you and make your flower-gifting experience delightful.
         </p>
       </div>
 
@@ -71,8 +71,8 @@ const Contact = () => {
                 </svg>
                 <p className='text-gray-600'>
                   <span className='font-medium'>Address:</span><br />
-                  Indusara Nawodya Weerabaddana<br />
-                  Pitipana, Homagama,<br />
+                  <br />
+                  <br />
                 </p>
               </div>
 
