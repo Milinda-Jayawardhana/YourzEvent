@@ -6,55 +6,62 @@ import { toast } from 'react-toastify'
 
 // ------- CATEGORY → SUBCATEGORY MAP -------
 const SUBCATEGORY_OPTIONS = {
-  "Passive Components": [
-    "Resistors",
-    "Capacitors",
-    "Inductors, Chokes & Coils",
-    "Filters",
-    "Frequency Control & Timing Devices",
-    "Encoders",
-    "Potentiometers, Trimmers & Rheostats",
-    "Antenna Accessories",
-    "Thermistors - NTC"
+  Occasions: [
+    "Birthday Bouquets",
+    "Anniversary Bouquets",
+    "Wedding Bouquets",
+    "Valentine’s Day Bouquets",
+    "Mother’s Day Bouquets",
+    "Graduation Bouquets",
+    "Get Well Soon Bouquets",
+    "Sympathy & Funeral Flowers"
   ],
-  "Active Components": [
-    "Diodes",
-    "Transistors (BJT, MOSFET)",
-    "Thyristors"
+
+  "Flower Types": [
+    "Rose Bouquets",
+    "Lily Bouquets",
+    "Tulip Bouquets",
+    "Orchid Bouquets",
+    "Sunflower Bouquets",
+    "Carnation Bouquets",
+    "Mixed Flower Bouquets",
+    "Exotic Flower Bouquets"
   ],
-  "Integrated Circuits (ICs)": [
-    "Microcontrollers",
-    "Microprocessors",
-    "Logic ICs",
-    "Amplifiers",
-    "Power Management"
+
+  "Bouquet Styles": [
+    "Hand-Tied Bouquets",
+    "Box Bouquets",
+    "Basket Arrangements",
+    "Bridal Bouquets",
+    "Luxury Bouquets",
+    "Minimalist Bouquets",
+    "Rustic Bouquets"
   ],
-  "Electromechanical": [
-    "Switches",
-    "Relays",
-    "Motors and Drivers",
-    "Solenoids"
+
+  "Special Combos": [
+    "Flowers & Chocolates",
+    "Flowers & Teddy Bears",
+    "Flowers & Cakes",
+    "Flowers & Gift Hampers",
+    "Romantic Combo Sets"
   ],
-  "Connectors": [
-    "Headers",
-    "Terminal Blocks",
-    "RF/Coaxial Connectors",
-    "Cable Assemblies"
+
+  "Seasonal Collections": [
+    "Spring Collection",
+    "Summer Collection",
+    "Autumn Collection",
+    "Winter Collection",
+    "Festive Specials"
   ],
-  "Development Tools": [
-    "Development Boards (Arduino, Raspberry Pi)",
-    "Breadboards"
-  ],
-  "Power Supplies": [
-    "AC Power Supplies",
-    "DC Power Supplies",
-    "AC/DC Converters",
-    "DC/DC Converters",
-    "Batteries",
-    "Battery Holders",
-    "Transformers"
+
+  "Custom & Personalized": [
+    "Custom Name Bouquets",
+    "Photo Bouquets",
+    "DIY Flower Boxes",
+    "Personalized Message Cards"
   ]
 };
+
 
 // ---------- IMAGE COMPRESSION FUNCTION -----------
 const compressImage = async (file, maxSizeMB = 2, qualityTarget = 0.8) => {

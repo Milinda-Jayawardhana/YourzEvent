@@ -16,65 +16,76 @@ const Collection = () => {
   // 🔥 NEW: Multiple expandable categories
   const [openCategories, setOpenCategories] = useState([]);
 
-  const categoryStructure = [
-    {
-      name: "Passive Components",
-      subs: [
-        "Resistors",
-        "Capacitors",
-        "Inductors, Chokes & Coils",
-        "Filters",
-        "Frequency Control & Timing Devices",
-        "Encoders",
-        "Potentiometers, Trimmers & Rheostats",
-        "Antenna Accessories",
-        "Thermistors - NTC"
-      ]
-    },
-    {
-      name: "Active Components",
-      subs: ["Diodes", "Transistors (BJT, MOSFET)", "Thyristors"]
-    },
-    {
-      name: "Integrated Circuits (ICs)",
-      subs: [
-        "Microcontrollers",
-        "Microprocessors",
-        "Logic ICs",
-        "Amplifiers",
-        "Power Management"
-      ]
-    },
-    {
-      name: "Electromechanical",
-      subs: ["Switches", "Relays", "Motors and Drivers", "Solenoids"]
-    },
-    {
-      name: "Connectors",
-      subs: [
-        "Headers",
-        "Terminal Blocks",
-        "RF/Coaxial Connectors",
-        "Cable Assemblies"
-      ]
-    },
-    {
-      name: "Development Tools",
-      subs: ["Development Boards (Arduino, Raspberry Pi)", "Breadboards"]
-    },
-    {
-      name: "Power Supplies",
-      subs: [
-        "AC Power Supplies",
-        "DC Power Supplies",
-        "AC/DC Converters",
-        "DC/DC Converters",
-        "Batteries",
-        "Battery Holders",
-        "Transformers"
-      ]
-    }
-  ];
+const categoryStructure = [
+  {
+    name: "Occasions",
+    subs: [
+      "Birthday Bouquets",
+      "Anniversary Bouquets",
+      "Wedding Bouquets",
+      "Valentine’s Day Bouquets",
+      "Mother’s Day Bouquets",
+      "Graduation Bouquets",
+      "Get Well Soon Bouquets",
+      "Sympathy & Funeral Flowers"
+    ]
+  },
+  {
+    name: "Flower Types",
+    subs: [
+      "Rose Bouquets",
+      "Lily Bouquets",
+      "Tulip Bouquets",
+      "Orchid Bouquets",
+      "Sunflower Bouquets",
+      "Carnation Bouquets",
+      "Mixed Flower Bouquets",
+      "Exotic Flower Bouquets"
+    ]
+  },
+  {
+    name: "Bouquet Styles",
+    subs: [
+      "Hand-Tied Bouquets",
+      "Box Bouquets",
+      "Basket Arrangements",
+      "Bridal Bouquets",
+      "Luxury Bouquets",
+      "Minimalist Bouquets",
+      "Rustic Bouquets"
+    ]
+  },
+  {
+    name: "Special Combos",
+    subs: [
+      "Flowers & Chocolates",
+      "Flowers & Teddy Bears",
+      "Flowers & Cakes",
+      "Flowers & Gift Hampers",
+      "Romantic Combo Sets"
+    ]
+  },
+  {
+    name: "Seasonal Collections",
+    subs: [
+      "Spring Collection",
+      "Summer Collection",
+      "Autumn Collection",
+      "Winter Collection",
+      "Festive Specials"
+    ]
+  },
+  {
+    name: "Custom & Personalized",
+    subs: [
+      "Custom Name Bouquets",
+      "Photo Bouquets",
+      "DIY Flower Boxes",
+      "Personalized Message Cards"
+    ]
+  }
+];
+
 
   // 🔥 New handler for multiple open categories
   const toggleCategoryOpen = (index) => {
@@ -203,7 +214,7 @@ const Collection = () => {
       {/* RIGHT SECTION */}
       <div className='flex-1'>
         <div className='flex justify-between text-base sm:text-2xl mb-4'>
-          <Title text1={'ALL'} text2={'COMPONENTS'} />
+          <Title text1={'ALL'} text2={'ITEMS'} />
 
           <select
             onChange={(e) => setSortType(e.target.value)}
