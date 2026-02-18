@@ -30,11 +30,33 @@ const Footer = () => {
 
           <div className="flex gap-4 mt-6">
             {/* Facebook Icon */}
-            <a href="https://www.facebook.com/share/1K6z5Pcd6a/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-gray-600 hover:text-blue-600 transition-colors">
+            <a href="https://www.facebook.com/share/1H3mRACwCD/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-gray-600 hover:text-blue-600 transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
               </svg>
             </a>
+            {/* Instagram Icon */}
+            <a href="https://www.instagram.com/yourzevents?igsh=MTBlbWR6d2N3enRzNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-gray-600 hover:text-pink-500 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37a4 4 0 1 1-7.94 1.68 4 4 0 0 1 7.94-1.68z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            {/* TikTok Icon */}
+            <a href="https://www.tiktok.com/@yourz.events?_r=1&_t=ZN-93FbDOu8FaY" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="text-gray-600 hover:text-cyan-500 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48" fill="none">
+                <path d="M32 12h-4v16.8c0 2.2.8 4.2 2.2 5.8 1.5 1.7 3.6 2.6 5.8 2.6 4.4 0 8-3.6 8-8V22h-4v6.6c0 2.2-1.8 4-4 4-1.1 0-2.1-.4-2.9-1.1-1.7-1.4-2.9-3.5-2.9-5.9V12z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M24 24c-4.4 0-8-3.6-8-8s3.6-8 8-8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </a>
+            {/* YouTube Icon */}
+            <a href="https://youtube.com/@yourzevents?si=eGgFt-O_hyB3A9II" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="text-gray-600 hover:text-red-600 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 576 512" fill="currentColor">
+                <path d="M549.655 124.083c-6.281-23.65-24.85-42.027-48.545-48.333C458.353 64 288 64 288 64s-170.353 0-213.11 11.75c-23.695 6.307-42.264 24.683-48.545 48.333C16 166.842 16 256 16 256s0 89.158 10.345 131.917c6.281 23.65 24.85 42.027 48.545 48.333C117.647 448 288 448 288 448s170.353 0 213.11-11.75c23.695-6.307 42.264-24.683 48.545-48.333C560 345.158 560 256 560 256s0-89.158-10.345-131.917zM232 334V178l142 78-142 78z"/>
+              </svg>
+            </a>
+
             {/* Gmail Icon */}
             <a
               href="https://mail.google.com/mail/?view=cm&fs=1&to=yourzevents1@gmail.com"
