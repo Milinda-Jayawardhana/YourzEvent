@@ -24,55 +24,68 @@ const serviceCards = [
   }
 ];
 
-const SlidingServiceCard = ({ card, isActive, onHover }) => (
-  <Link
-    to={card.links[0].to}
-    onMouseEnter={onHover}
-    className="group relative overflow-hidden rounded-[2rem] border border-[#e8ddcf] bg-[#fffaf4] p-6 shadow-[0_20px_60px_rgba(138,94,76,0.12)] transition-transform duration-300 hover:-translate-y-1"
-  >
-    <div className="absolute inset-0 bg-gradient-to-br from-[#fff8f1] via-transparent to-[#f7ecdf]" />
-    <div className="relative z-10 flex h-full flex-col gap-6 lg:flex-row">
-      <div className="flex-1">
-        <p className="text-xs uppercase tracking-[0.35em] text-[#b48363]">Our Services</p>
-        <h2 className="mt-3 font-['Prata'] text-3xl text-[#3f2d24]">{card.title}</h2>
-        <p className="mt-4 max-w-xl text-sm leading-7 text-[#72594a]">{card.description}</p>
+const SlidingServiceCard = ({ card, isActive, onHover }) => {
+  const isFloralCard = card.title === 'Floral Arrangements';
 
-        <div className="mt-6 flex flex-wrap gap-3">
-          {card.links.map((link) => (
-            <span
-              key={link.to}
-              className="rounded-full border border-[#d9c5b1] bg-white/80 px-4 py-2 text-xs font-medium uppercase tracking-[0.22em] text-[#6b4d3e]"
+  return (
+    <div
+      onMouseEnter={onHover}
+      className="group relative overflow-hidden rounded-[2rem] border border-[#e8ddcf] bg-[#fffaf4] p-6 shadow-[0_20px_60px_rgba(138,94,76,0.12)] transition-transform duration-300 hover:-translate-y-1"
+    >
+      <div className="absolute inset-0 bg-gradient-to-br from-[#fff8f1] via-transparent to-[#f7ecdf]" />
+      <div className="relative z-10 flex h-full flex-col gap-6 lg:flex-row">
+        <div className="flex-1">
+          <p className="text-xs uppercase tracking-[0.35em] text-[#b48363]">Our Services</p>
+          <h2 className="mt-3 font-['Prata'] text-3xl text-[#3f2d24]">{card.title}</h2>
+          <p className="mt-4 max-w-xl text-sm leading-7 text-[#72594a]">{card.description}</p>
+
+          {isFloralCard ? (
+            <div className="mt-8 flex flex-wrap gap-3">
+              {card.links.map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className="rounded-full border border-[#d9c5b1] bg-white px-5 py-3 text-xs font-medium uppercase tracking-[0.22em] text-[#6b4d3e] transition-colors hover:bg-[#f5e9dc]"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div className="mt-8 flex flex-wrap gap-3">
+              {card.links.map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className="rounded-full border border-[#d9c5b1] bg-white px-5 py-3 text-xs font-medium uppercase tracking-[0.22em] text-[#6b4d3e] transition-colors hover:bg-[#f5e9dc]"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="grid flex-1 grid-cols-2 gap-3">
+          {card.images.map((image, index) => (
+            <div
+              key={image}
+              className={`overflow-hidden rounded-[1.35rem] border border-white/70 shadow-lg transition-all duration-500 ${
+                isActive && index === 0 ? 'scale-[1.03]' : ''
+              }`}
             >
-              {link.label}
-            </span>
+              <img
+                src={image}
+                alt={card.title}
+                className="h-36 w-full object-cover transition-transform duration-700 group-hover:scale-105 sm:h-44"
+              />
+            </div>
           ))}
         </div>
-
-        <div className="mt-8 inline-flex items-center gap-3 text-sm font-medium uppercase tracking-[0.22em] text-[#7f5641]">
-          Discover More
-          <span className={`transition-transform duration-300 ${isActive ? 'translate-x-1' : ''}`}>{'->'}</span>
-        </div>
-      </div>
-
-      <div className="grid flex-1 grid-cols-2 gap-3">
-        {card.images.map((image, index) => (
-          <div
-            key={image}
-            className={`overflow-hidden rounded-[1.35rem] border border-white/70 shadow-lg transition-all duration-500 ${
-              isActive && index === 0 ? 'scale-[1.03]' : ''
-            }`}
-          >
-            <img
-              src={image}
-              alt={card.title}
-              className="h-36 w-full object-cover transition-transform duration-700 group-hover:scale-105 sm:h-44"
-            />
-          </div>
-        ))}
       </div>
     </div>
-  </Link>
-);
+  );
+};
 
 const Services = () => {
   const [activeIndex, setActiveIndex] = useState(0);

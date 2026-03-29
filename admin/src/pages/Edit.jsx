@@ -22,6 +22,7 @@ const Edit = ({ token }) => {
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
+  const [majorCategory, setMajorCategory] = useState('Flower Bouquets');
   const [category, setCategory] = useState('');
   const [subCategory, setSubCategory] = useState('');
   const [price, setPrice] = useState('');
@@ -69,6 +70,7 @@ const Edit = ({ token }) => {
         if (product) {
           setName(product.name);
           setDescription(product.description);
+          setMajorCategory(product.majorCategory || 'Flower Bouquets');
           setPrice(product.price);
           setBestseller(product.bestseller);
           await fetchCategories(product.category, product.subCategory);
@@ -127,6 +129,7 @@ const Edit = ({ token }) => {
       const formData = new FormData();
       formData.append('name', name);
       formData.append('description', description);
+      formData.append('majorCategory', majorCategory);
       formData.append('category', category);
       formData.append('subCategory', subCategory);
       formData.append('price', price);
@@ -218,6 +221,19 @@ const Edit = ({ token }) => {
       </div>
 
       <div className="flex w-full flex-col gap-2 sm:flex-row sm:gap-8">
+        <div>
+          <p className="mb-2">Major Category</p>
+          <select
+            onChange={(event) => setMajorCategory(event.target.value)}
+            value={majorCategory}
+            className="w-full max-w-[500px] px-3 py-2"
+            required
+          >
+            <option value="Flower Bouquets">Flower Bouquets</option>
+            <option value="Gift Items">Gift Items</option>
+          </select>
+        </div>
+
         <div>
           <p className="mb-2">Product Category</p>
           <select

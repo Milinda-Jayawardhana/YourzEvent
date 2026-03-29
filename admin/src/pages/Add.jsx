@@ -74,6 +74,7 @@ const Add = ({ token }) => {
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
+  const [majorCategory, setMajorCategory] = useState('Flower Bouquets');
   const [category, setCategory] = useState('');
   const [subCategory, setSubCategory] = useState('');
   const [price, setPrice] = useState('');
@@ -188,6 +189,7 @@ const Add = ({ token }) => {
     const formData = new FormData();
     formData.append('name', name);
     formData.append('description', description);
+    formData.append('majorCategory', majorCategory);
     formData.append('category', category);
     formData.append('subCategory', subCategory);
     formData.append('price', price);
@@ -283,6 +285,18 @@ const Add = ({ token }) => {
       </div>
 
       <div className="mt-3 flex w-full flex-col gap-5 sm:flex-row">
+        <div>
+          <p className="mb-2">Major Category</p>
+          <select
+            value={majorCategory}
+            onChange={(event) => setMajorCategory(event.target.value)}
+            className="px-3 py-2"
+          >
+            <option value="Flower Bouquets">Flower Bouquets</option>
+            <option value="Gift Items">Gift Items</option>
+          </select>
+        </div>
+
         <div>
           <p className="mb-2">Category</p>
           <select

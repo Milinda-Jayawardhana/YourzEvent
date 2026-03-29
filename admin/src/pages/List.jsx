@@ -132,9 +132,10 @@ const List = ({ token }) => {
       />
 
       <div className='flex flex-col gap-2'>
-        <div className='hidden grid-cols-[1fr_3fr_1fr_1fr_1fr_1fr_1fr_1fr] items-center border bg-gray-100 px-2 py-1 text-sm md:grid'>
+        <div className='hidden grid-cols-[1fr_3fr_1.3fr_1fr_1fr_1fr_1fr_1fr_1fr] items-center border bg-gray-100 px-2 py-1 text-sm md:grid'>
           <b>Image</b>
           <b>Name</b>
+          <b>Major Category</b>
           <b>Category</b>
           <b>Price</b>
           <b className='text-center'>Best Seller</b>
@@ -146,10 +147,11 @@ const List = ({ token }) => {
         {filteredList.map((item) => (
           <div
             key={item._id}
-            className='grid grid-cols-[1fr_3fr_1fr] items-center gap-2 border px-2 py-1 text-sm md:grid-cols-[1fr_3fr_1fr_1fr_1fr_1fr_1fr_1fr]'
+            className='grid grid-cols-[1fr_3fr_1fr] items-center gap-2 border px-2 py-1 text-sm md:grid-cols-[1fr_3fr_1.3fr_1fr_1fr_1fr_1fr_1fr_1fr]'
           >
             <img className='w-12' src={item.image[0]} alt='' />
             <p>{item.name}</p>
+            <p>{item.majorCategory || 'Flower Bouquets'}</p>
             <p>{item.category}</p>
             <p>{currency}{item.price}</p>
 

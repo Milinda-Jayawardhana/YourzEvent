@@ -5,7 +5,7 @@ import Title from '../components/Title';
 import ProductItem from '../components/ProductItem';
 import PropTypes from 'prop-types';
 
-const Collection = ({ title1 = 'ALL', title2 = 'ITEMS' }) => {
+const Collection = ({ title1 = 'ALL', title2 = 'ITEMS', majorCategory = '' }) => {
   const { products, categories, search, showSearch } = useContext(ShopContext);
   const [showFilter, setShowFilter] = useState(false);
   const [filterProducts, setFilterProducts] = useState([]);
@@ -27,6 +27,12 @@ const Collection = ({ title1 = 'ALL', title2 = 'ITEMS' }) => {
     if (search) {
       productsCopy = productsCopy.filter((item) =>
         item.name.toLowerCase().includes(search.toLowerCase())
+      );
+    }
+
+    if (majorCategory) {
+      productsCopy = productsCopy.filter(
+        (item) => (item.majorCategory || 'Flower Bouquets') === majorCategory
       );
     }
 
@@ -67,7 +73,7 @@ const Collection = ({ title1 = 'ALL', title2 = 'ITEMS' }) => {
 
   useEffect(() => {
     applyFilter();
-  }, [subCategory, search, showSearch, products]);
+  }, [majorCategory, subCategory, search, showSearch, products]);
 
   useEffect(() => {
     sortProduct();
@@ -164,4 +170,5 @@ export default Collection;
 Collection.propTypes = {
   title1: PropTypes.string,
   title2: PropTypes.string,
+  majorCategory: PropTypes.string,
 };

@@ -26,11 +26,16 @@ const addProduct = async(req, res) => {
             name, 
             description, 
             price, 
+            majorCategory,
             category, 
             subCategory, 
             bestseller,
             stockStatus // New field
         } = req.body;
+
+        if (!['Flower Bouquets', 'Gift Items'].includes(majorCategory)) {
+            return res.json({ success: false, message: "Major category must be Flower Bouquets or Gift Items" });
+        }
 
         const categoryError = await validateCategorySelection(category, subCategory);
         if (categoryError) {
@@ -58,6 +63,7 @@ const addProduct = async(req, res) => {
             name,
             description,
             price: Number(price),
+            majorCategory,
             category,
             subCategory,
             bestseller: bestseller === "true" ? true : false,
@@ -84,11 +90,16 @@ const updateProduct = async (req, res) => {
             name,
             description,
             price,
+            majorCategory,
             category,
             subCategory,
             bestseller,
             stockStatus,
         } = req.body;
+
+        if (!['Flower Bouquets', 'Gift Items'].includes(majorCategory)) {
+            return res.json({ success: false, message: "Major category must be Flower Bouquets or Gift Items" });
+        }
 
         const existingProduct = await productModel.findById(id);
         if (!existingProduct) {
@@ -121,6 +132,7 @@ const updateProduct = async (req, res) => {
             name,
             description,
             price: Number(price),
+            majorCategory,
             category,
             subCategory,
             bestseller: bestseller === "true" || bestseller === true,
