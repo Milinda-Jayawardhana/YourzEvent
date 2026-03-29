@@ -25,7 +25,6 @@ const Edit = ({ token }) => {
   const [category, setCategory] = useState('');
   const [subCategory, setSubCategory] = useState('');
   const [price, setPrice] = useState('');
-  const [sizes, setSizes] = useState([]);
   const [bestseller, setBestseller] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -71,7 +70,6 @@ const Edit = ({ token }) => {
           setName(product.name);
           setDescription(product.description);
           setPrice(product.price);
-          setSizes(product.sizes || []);
           setBestseller(product.bestseller);
           await fetchCategories(product.category, product.subCategory);
           setDisplayImages({
@@ -132,7 +130,6 @@ const Edit = ({ token }) => {
       formData.append('category', category);
       formData.append('subCategory', subCategory);
       formData.append('price', price);
-      formData.append('sizes', JSON.stringify(sizes));
       formData.append('bestseller', bestseller);
 
       if (image1) formData.append('image1', image1);
@@ -273,30 +270,6 @@ const Edit = ({ token }) => {
             placeholder="0"
             required
           />
-        </div>
-      </div>
-
-      <div>
-        <p className="mb-2">Product Sizes</p>
-        <div className="flex gap-3">
-          {['S', 'M', 'L', 'XL', 'XXL'].map((size) => (
-            <div
-              key={size}
-              onClick={() =>
-                setSizes((prev) =>
-                  prev.includes(size)
-                    ? prev.filter((item) => item !== size)
-                    : [...prev, size]
-                )
-              }
-            >
-              <p
-                className={`${sizes.includes(size) ? 'bg-blue-200' : 'bg-slate-200'} cursor-pointer px-3 py-1`}
-              >
-                {size}
-              </p>
-            </div>
-          ))}
         </div>
       </div>
 

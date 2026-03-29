@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { backendUrl, currency } from '../App'
 import { toast } from 'react-toastify'
-import { assets } from '../assets/assets'
+import PropTypes from 'prop-types'
 
 const DeliveredOrders = ({ token }) => {
   const [orders, setOrders] = useState([])
@@ -44,7 +44,7 @@ const DeliveredOrders = ({ token }) => {
     formData.append('phone', order.address.phone)
     formData.append(
       'items',
-      order.items.map(item => `${item.name} x${item.quantity} (${item.size})`).join(', ')
+      order.items.map(item => `${item.name} x${item.quantity}`).join(', ')
     )
     formData.append(
       'address',
@@ -61,7 +61,7 @@ const DeliveredOrders = ({ token }) => {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: formData.toString()
       })
-      const text = await res.text()
+      await res.text()
       // Optionally, you can check for success in the response text
       return true
     } catch (err) {
@@ -97,14 +97,6 @@ const DeliveredOrders = ({ token }) => {
     } else {
       toast.error('Order not deleted because it was not added to the sheet.')
     }
-  }
-
-  const handleSendAll = () => {
-    if (orders.length === 0) {
-      toast.info('No delivered orders to send.')
-      return
-    }
-    orders.forEach(order => sendToSheet(order))
   }
 
   const statusHandler = async (event, orderId) => {
@@ -149,7 +141,6 @@ const DeliveredOrders = ({ token }) => {
                 {order.items.map((item, idx) => (
                   <p className="py-0.5" key={idx}>
                     {item.name} x {item.quantity}
-                    <span>{item.size}{idx !== order.items.length - 1 ? ',' : ''}</span>
                   </p>
                 ))}
                 <p className="mt-3 mb-2 font-medium">
@@ -204,3 +195,7 @@ const DeliveredOrders = ({ token }) => {
 }
 
 export default DeliveredOrders
+
+DeliveredOrders.propTypes = {
+  token: PropTypes.string.isRequired,
+}

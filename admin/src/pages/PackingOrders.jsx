@@ -1,9 +1,8 @@
-import React from 'react'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { backendUrl, currency } from '../App'
 import { toast } from 'react-toastify'
-import { assets } from '../assets/assets'
+import PropTypes from 'prop-types'
 
 const PackingOrders = ({ token }) => {
   const [orders, setOrders] = useState([])
@@ -120,7 +119,7 @@ const PackingOrders = ({ token }) => {
               <div class="section-title">ORDER ITEMS:</div>
               <div class="items">
                 ${order.items.map(item => 
-                  `<div>${item.name} x ${item.quantity} ${item.size ? `(${item.size})` : ''}</div>`
+                  `<div>${item.name} x ${item.quantity}</div>`
                 ).join('')}
               </div>
             </div>
@@ -212,13 +211,9 @@ const PackingOrders = ({ token }) => {
             </div>
             <div>
               <div>
-            {order.items.map((item, index) => {
-                    if (index == order.items.length - 1) {
-                      return <p className='py-0.5' key={index}>{item.name} x {item.quantity}<span>{item.size}</span></p>
-                    } else {
-                      return <p className='py-0.5' key={index}>{item.name} x {item.quantity}<span>{item.size},</span></p>
-                    }
-                  })}
+            {order.items.map((item, index) => (
+                    <p className='py-0.5' key={index}>{item.name} x {item.quantity}</p>
+                  ))}
                 </div>
                 <p className='mt-3 mb-2 font-medium'>{order.address.firstName + " " + order.address.lastName}</p>
                 <div>
@@ -265,3 +260,7 @@ const PackingOrders = ({ token }) => {
 }
 
 export default PackingOrders
+
+PackingOrders.propTypes = {
+  token: PropTypes.string.isRequired,
+}

@@ -173,7 +173,7 @@ const List = ({ token }) => {
               <select
                 value={item.stockStatus}
                 onChange={(event) => updateStock(item._id, event.target.value)}
-                className={`cursor-pointer rounded px-2 py-1 text-white ${getStatusColor(item.stockStatus)}`}
+                className={`cursor-pointer rounded px-1 py-1 text-white ${getStatusColor(item.stockStatus)}`}
                 disabled={isUpdating}
               >
                 {stockOptions.map((option) => (

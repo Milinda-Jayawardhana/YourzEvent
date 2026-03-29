@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { backendUrl, currency } from "../App";
 import { toast } from "react-toastify";
-import { assets } from "../assets/assets";
+import PropTypes from "prop-types";
 
 const CancelledOrders = ({ token }) => {
 	const [orders, setOrders] = useState([]);
@@ -93,10 +93,6 @@ const CancelledOrders = ({ token }) => {
 								{order.items.map((item, idx) => (
 									<p className="py-0.5" key={idx}>
 										{item.name} x {item.quantity}
-										<span>
-											{item.size}
-											{idx !== order.items.length - 1 ? "," : ""}
-										</span>
 									</p>
 								))}
 								<p className="mt-3 mb-2 font-medium">{order.address.firstName + " " + order.address.lastName}</p>
@@ -154,3 +150,7 @@ const CancelledOrders = ({ token }) => {
 };
 
 export default CancelledOrders;
+
+CancelledOrders.propTypes = {
+	token: PropTypes.string.isRequired,
+};

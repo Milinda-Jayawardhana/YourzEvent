@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import Title from "../components/Title";
 import CartTotal from "../components/CartTotal";
 import axios from "axios";
@@ -52,11 +52,10 @@ const PlaceOrder = () => {
 			let orderItems = [];
 
 			for (const productId in cartItems) {
-				for (const size in cartItems[productId]) {
-					if (cartItems[productId][size] > 0) {
+				for (const variant in cartItems[productId]) {
+					if (cartItems[productId][variant] > 0) {
 						const info = structuredClone(products.find((p) => p._id === productId));
-						info.size = size;
-						info.quantity = cartItems[productId][size];
+						info.quantity = cartItems[productId][variant];
 						orderItems.push(info);
 					}
 				}

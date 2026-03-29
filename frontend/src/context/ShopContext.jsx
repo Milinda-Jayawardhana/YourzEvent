@@ -19,11 +19,7 @@ const ShopContextProvider = (props) => {
     const [token, setToken] = useState("");
     const navigate = useNavigate();
 
-    const addToCart = async (itemId, size) => {
-        if (!size) {
-            toast.error("Select Product Size");
-            return;
-        }
+    const addToCart = async (itemId, size = "default") => {
 
         let cartData = structuredClone(cartItems);
         let isFirstTime = false;
@@ -72,7 +68,7 @@ const ShopContextProvider = (props) => {
         return totalCount;
     };
 
-    const updateQuantity = async (itemId, size, quantity) => {
+    const updateQuantity = async (itemId, size = "default", quantity) => {
         let cartData = structuredClone(cartItems);
         cartData[itemId][size] = quantity;
         setCartItems(cartData);
