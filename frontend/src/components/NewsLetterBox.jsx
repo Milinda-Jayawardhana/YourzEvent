@@ -16,14 +16,14 @@ const NewsLetterBox = () => {
     console.log("Sending email with params:", templateParams)
 
     emailjs.send(
-      'service_bmwxgww',       // Your EmailJS service ID
-      'template_2hubfvb',      // Your EmailJS template ID
+      'service_jcnvbnf',       // Your EmailJS service ID
+      'template_0q53chd',      // Your EmailJS template ID
       templateParams,
-      'INIKYQWseQGwbV8y8'      // Your EmailJS public key
+      'EIVO2zEufbULRhQHq'      // Your EmailJS public key
     )
     .then((response) => {
       console.log('SUCCESS!', response.status, response.text)
-      setStatus('🎉 Subscribed successfully!')
+      setStatus('Subscribed successfully!')
       setEmail('')
       setError('')
     })
@@ -31,7 +31,7 @@ const NewsLetterBox = () => {
     .catch((error) => {
       console.error('FAILED...', error)
       setStatus('')
-      setError('❌ Failed to subscribe. Please try again.')
+      setError('Failed to subscribe. Please try again.')
     })
   }
 
@@ -53,7 +53,7 @@ const NewsLetterBox = () => {
         />
         <button type='submit' className='theme-button-primary rounded-full px-6 py-3 text-xs tracking-[0.24em]'>SUBSCRIBE</button>
       </form>
-      {status && <p className='text-sm text-green-600 mt-2'>{status}</p>}
+      {status && <p className='text-sm text-black mt-2'>{status}</p>}
       {error && <p className='text-sm text-red-600 mt-2'>{error}</p>}
     </div>
   )
