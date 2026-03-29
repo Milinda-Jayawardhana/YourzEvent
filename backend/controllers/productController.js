@@ -77,6 +77,69 @@ const addProduct = async(req, res) => {
     }
 }
 
+const updateProduct = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const {
+            name,
+            description,
+            price,
+            category,
+            subCategory,
+            bestseller,
+            stockStatus,
+        } = req.body;
+
+        const existingProduct = await productModel.findById(id);
+        if (!existingProduct) {
+            return res.json({ success: false, message: "Product not found" });
+        }
+
+        const categoryError = await validateCategorySelection(category, subCategory);
+        if (categoryError) {
+            return res.json({ success: false, message: categoryError });
+        }
+
+        const image1 = req.files?.image1 && req.files.image1[0];
+        const image2 = req.files?.image2 && req.files.image2[0];
+        const image3 = req.files?.image3 && req.files.image3[0];
+        const image4 = req.files?.image4 && req.files.image4[0];
+
+        const newImages = [image1, image2, image3, image4].filter((item) => item !== undefined);
+
+        let imagesUrl = existingProduct.image;
+        if (newImages.length > 0) {
+            imagesUrl = await Promise.all(
+                newImages.map(async (item) => {
+                    const result = await cloudinary.uploader.upload(item.path, { resource_type: "image" });
+                    return result.secure_url;
+                })
+            );
+        }
+
+        const updatedFields = {
+            name,
+            description,
+            price: Number(price),
+            category,
+            subCategory,
+            bestseller: bestseller === "true" || bestseller === true,
+            image: imagesUrl,
+        };
+
+        if (stockStatus) {
+            updatedFields.stockStatus = stockStatus;
+        }
+
+        await productModel.findByIdAndUpdate(id, updatedFields);
+
+        res.json({ success: true, message: "Product updated successfully" });
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message });
+    }
+}
+
 //list product
 // List products sorted by most recent (newest first)
 const listProducts = async (req, res) => {
@@ -150,6 +213,7 @@ export {
     removeProduct, 
     listProducts, 
     addProduct,
+    updateProduct,
     updateStockStatus, // New function export
     updateBestSeller
 }

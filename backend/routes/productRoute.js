@@ -4,6 +4,7 @@ import {
   removeProduct,
   listProducts,
   addProduct,
+  updateProduct,
   updateStockStatus,
   updateBestSeller
 } from '../controllers/productController.js';
@@ -23,6 +24,12 @@ productRouter.post('/single', singleProduct);
 productRouter.get('/list', listProducts);
 productRouter.post('/updateStockStatus', adminAuth, updateStockStatus); // Add this new route
 productRouter.post('/updateBestSeller', adminAuth, updateBestSeller); // Add this new route
+productRouter.put('/:id', adminAuth, upload.fields([
+  {name:'image1', maxCount:1},
+  {name:'image2', maxCount:1},
+  {name:'image3', maxCount:1},
+  {name:'image4', maxCount:1}
+]), updateProduct);
 productRouter.get('/:id', singleProduct);
 
 export default productRouter;
