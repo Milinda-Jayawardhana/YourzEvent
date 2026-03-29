@@ -1,4 +1,3 @@
-import React from 'react'
 import { assets } from '../assets/assets'
 
 const Footer = () => {
@@ -16,6 +15,8 @@ const Footer = () => {
           <ul className='flex flex-col gap-1 text-gray-600'>
             <li><a href="/" className="hover:text-gray-900 transition-colors">Home</a></li>
             <li><a href="/about" className="hover:text-gray-900 transition-colors">About Us</a></li>
+            <li><a href="/services" className="hover:text-gray-900 transition-colors">Our Services</a></li>
+            <li><a href="/services/floral-arrangements/flower-bouquets" className="hover:text-gray-900 transition-colors">Flower Bouquets</a></li>
             <li><a href="/terms-and-conditions" className="hover:text-gray-900 transition-colors">Terms and Conditions</a></li>
             <li><a href="/privacy-and-policy" className="hover:text-gray-900 transition-colors">Privacy Policy</a></li>
             <li><a href="/return-policy" className="hover:text-gray-900 transition-colors">Return Policy</a></li>

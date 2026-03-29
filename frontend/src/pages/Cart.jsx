@@ -66,7 +66,7 @@ const Cart = () => {
         {cartData.length === 0 && (
           <div className='text-center my-20'>
             <p className='text-gray-600 mb-6'>Your cart is currently empty.</p>
-            <button onClick={() => navigate('/collection')} className='bg-black text-white px-6 py-3 text-sm'>CONTINUE SHOPPING</button>
+            <button onClick={() => navigate('/services/floral-arrangements/flower-bouquets')} className='bg-black text-white px-6 py-3 text-sm'>CONTINUE SHOPPING</button>
           </div>
         )}
       </div>

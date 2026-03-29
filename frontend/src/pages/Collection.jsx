@@ -3,8 +3,9 @@ import { ShopContext } from '../context/ShopContext';
 import { assets } from '../assets/assets';
 import Title from '../components/Title';
 import ProductItem from '../components/ProductItem';
+import PropTypes from 'prop-types';
 
-const Collection = () => {
+const Collection = ({ title1 = 'ALL', title2 = 'ITEMS' }) => {
   const { products, categories, search, showSearch } = useContext(ShopContext);
   const [showFilter, setShowFilter] = useState(false);
   const [filterProducts, setFilterProducts] = useState([]);
@@ -128,7 +129,7 @@ const Collection = () => {
 
       <div className='flex-1'>
         <div className='mb-4 flex justify-between text-base sm:text-2xl'>
-          <Title text1={'ALL'} text2={'ITEMS'} />
+          <Title text1={title1} text2={title2} />
 
           <select
             onChange={(event) => setSortType(event.target.value)}
@@ -159,3 +160,8 @@ const Collection = () => {
 };
 
 export default Collection;
+
+Collection.propTypes = {
+  title1: PropTypes.string,
+  title2: PropTypes.string,
+};

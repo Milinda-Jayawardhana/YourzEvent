@@ -1,8 +1,10 @@
-import React from 'react'
 import {Routes,Route} from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
-import Collection from './pages/Collection'
+import FlowerBouquets from './pages/FlowerBouquets'
+import Services from './pages/Services'
+import Events from './pages/Events'
+import GiftPackages from './pages/GiftPackages'
 import Contact from './pages/Contact'
 import Footer from './components/Footer'
 import SearchBar from './components/SearchBar'
@@ -14,10 +16,9 @@ import Login from './pages/Login'
 import About from './pages/About'
 import WhatsAppFloat from './components/WhatsappFloat'
 import Terms from './pages/Terms'
-import privacy from './pages/Policy'
 import Returns from './pages/Returns'
 import ScrollToTop from './components/ScrollToTop'
-import {ToastContainer,toast} from 'react-toastify'//used for notifications
+import {ToastContainer} from 'react-toastify'//used for notifications
 import 'react-toastify/dist/ReactToastify.css'
 import Policy from './pages/Policy'
 
@@ -31,7 +32,11 @@ const App = () => {
       <SearchBar />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/collection' element={<Collection/>} />
+        <Route path='/collection' element={<FlowerBouquets />} />
+        <Route path='/services' element={<Services />} />
+        <Route path='/services/events' element={<Events />} />
+        <Route path='/services/floral-arrangements/flower-bouquets' element={<FlowerBouquets />} />
+        <Route path='/services/floral-arrangements/gift-items-packages' element={<GiftPackages />} />
         <Route path='/contact' element={<Contact/>} />
         <Route path='/about' element={<About />} />
         <Route path='/product/:productId' element={<Product/>} />
