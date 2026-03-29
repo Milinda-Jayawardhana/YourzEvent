@@ -8,6 +8,8 @@ const Home = () => {
   return (
     <div className='pb-12'>
       <Hero />
+      <div className='py-10'><div className='theme-button-primary w-60% h-2 rounded-full'></div></div>
+      
       <LatestCollection />
       <BestSeller/>
       <OurPolicy/>
