@@ -1,5 +1,23 @@
 import {v2 as cloudinary} from "cloudinary"
 import productModel from "../models/productModel.js"
+import categoryModel from "../models/categoryModel.js"
+
+const validateCategorySelection = async (category, subCategory) => {
+    const categoryDoc = await categoryModel.findOne({ name: category });
+    if (!categoryDoc) {
+        return "Selected category does not exist";
+    }
+
+    const hasSubCategory = categoryDoc.subcategories.some(
+        (item) => item.name === subCategory
+    );
+
+    if (!hasSubCategory) {
+        return "Selected subcategory does not exist in the chosen category";
+    }
+
+    return null;
+}
 
 //add product
 const addProduct = async(req, res) => {
@@ -13,6 +31,11 @@ const addProduct = async(req, res) => {
             bestseller,
             stockStatus // New field
         } = req.body;
+
+        const categoryError = await validateCategorySelection(category, subCategory);
+        if (categoryError) {
+            return res.json({ success: false, message: categoryError });
+        }
 
         const image1 = req.files.image1 && req.files.image1[0]
         const image2 = req.files.image2 && req.files.image2[0]
@@ -81,7 +104,7 @@ const removeProduct = async(req, res) => {
 //single product info
 const singleProduct = async(req, res) => {
     try {
-        const {productId} = req.body
+        const productId = req.body.productId || req.params.id
         const product = await productModel.findById(productId)
         res.json({success: true, product})
     } catch(error) {
