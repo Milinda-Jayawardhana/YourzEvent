@@ -1,158 +1,180 @@
-import React, { useState, useRef } from 'react'
+import { useRef, useState } from 'react'
 import Title from '../components/Title'
-import { assets } from '../assets/assets'
 import NewsLetterBox from '../components/NewsLetterBox'
 import emailjs from '@emailjs/browser'
 
+const faqs = [
+  {
+    question: 'What are your shipping options?',
+    answer:
+      'We offer standard shipping, express shipping, and international delivery options. Shipping costs vary based on your location and selected method.'
+  },
+  {
+    question: 'How can I track my order?',
+    answer:
+      'Once your order is shipped, you will receive a confirmation email with tracking details so you can follow the delivery progress.'
+  },
+  {
+    question: 'What is your return policy?',
+    answer:
+      'We accept returns within 30 days of purchase for eligible items in their original condition. Please contact our support team to begin the process.'
+  },
+  {
+    question: 'Do you offer international shipping?',
+    answer:
+      'Yes, we ship to most countries worldwide. Delivery times and rates vary depending on destination.'
+  }
+]
+
+const socialButtonClass = 'rounded-full bg-[#f7ecdf] p-3 transition-colors hover:bg-[#ead7c3]'
+
 const Contact = () => {
-  const form = useRef();
+  const form = useRef()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
     message: ''
-  });
-  const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState(null);
+  })
+  const [loading, setLoading] = useState(false)
+  const [status, setStatus] = useState(null)
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
-    });
-  };
+    })
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setStatus(null);
+    e.preventDefault()
+    setLoading(true)
+    setStatus(null)
 
-    // EmailJS service configuration
     emailjs.sendForm(
-      'service_bmwxgww', // Replace with your EmailJS service ID
-      'template_tbyz2d8', // Replace with your EmailJS template ID
+      'service_bmwxgww',
+      'template_tbyz2d8',
       form.current,
       'INIKYQWseQGwbV8y8'
     )
-      .then((result) => {
-        console.log('Email sent successfully:', result.text);
-        setLoading(false);
-        setStatus('success');
-        setFormData({ name: '', email: '', subject: '', message: '' });
-      }, (error) => {
-        console.error('Failed to send email:', error.text);
-        setLoading(false);
-        setStatus('error');
-      });
-  };
+      .then(() => {
+        setLoading(false)
+        setStatus('success')
+        setFormData({ name: '', email: '', subject: '', message: '' })
+      })
+      .catch(() => {
+        setLoading(false)
+        setStatus('error')
+      })
+  }
 
   return (
-    <div className="bg-gray-50">
-      <div className='text-center text-2xl pt-10 border-t'>
+    <div className="pb-8">
+      <div className='border-t border-[#ead7c3] pt-10 text-center text-2xl'>
         <Title text1={'CONTACT'} text2={'US'} />
-        <p className="text-gray-600 max-w-2xl mx-auto mt-4 px-4">
-          We’d love to hear from you! Whether you have a question about our bouquets, deliveries, custom arrangements, or anything else, our team is always ready to assist you and make your flower-gifting experience delightful.
+        <p className="mx-auto mt-4 max-w-2xl px-4 theme-section-copy">
+          We would love to hear from you. Whether you have a question about our
+          bouquets, deliveries, custom arrangements, or event styling, our team
+          is ready to help.
         </p>
       </div>
 
-      {/* Contact Info and Form Section */}
-      <div className='my-10 flex flex-col justify-center md:flex-row gap-10 mb-28 px-4 max-w-6xl mx-auto'>
-        {/* Left side - Store info and image */}
-        <div className="w-full md:w-1/2 flex flex-col gap-6">
-          <img src="/s5.jpeg" alt="Logo1" className='w-full rounded-lg shadow-md' />
+      <div className='mx-auto my-10 mb-28 flex max-w-6xl flex-col justify-center gap-10 px-4 md:flex-row'>
+        <div className="flex w-full flex-col gap-6 md:w-1/2">
+          <img
+            src="/s5.jpeg"
+            alt="YourzEvents floral display"
+            className='w-full rounded-[1.75rem] shadow-[0_20px_60px_rgba(138,94,76,0.14)]'
+          />
 
-          <div className='bg-white p-6 rounded-lg shadow-md'>
-            <h2 className='font-semibold text-xl text-gray-800 border-b pb-3 mb-4'>Visit Our Store</h2>
+          <div className='theme-panel rounded-[1.75rem] p-6'>
+            <h2 className='theme-heading mb-4 border-b border-[#ead7c3] pb-3 text-xl'>Visit Our Store</h2>
             <div className='flex flex-col gap-4'>
-              
               <div className='flex items-start gap-3'>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-600 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="mt-1 h-5 w-5 text-[#8f624b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                <p className='text-gray-600'>
-                  <span className='font-medium'>Phone:</span><br />
+                <p className='theme-section-copy'>
+                  <span className='font-medium text-[#3f2d24]'>Phone:</span><br />
                   +971 58 304 8569
                 </p>
               </div>
 
               <div className='flex items-start gap-3'>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-600 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="mt-1 h-5 w-5 text-[#8f624b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <p className='text-gray-600'>
-                  <span className='font-medium'>Email:</span><br />
+                <p className='theme-section-copy'>
+                  <span className='font-medium text-[#3f2d24]'>Email:</span><br />
                   yourzevents1@gmail.com
                 </p>
               </div>
 
               <div className='flex items-start gap-3'>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-600 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="mt-1 h-5 w-5 text-[#8f624b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <p className='text-gray-600'>
-                  <span className='font-medium'>Working Hours:</span><br />
+                <p className='theme-section-copy'>
+                  <span className='font-medium text-[#3f2d24]'>Working Hours:</span><br />
                   24 Hours
                 </p>
               </div>
             </div>
           </div>
-
-
         </div>
 
-        {/* Right side - Contact form */}
         <div className="w-full md:w-1/2">
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className='font-semibold text-xl text-gray-800 border-b pb-3 mb-4'>Send Us a Message</h2>
+          <div className="theme-panel rounded-[1.75rem] p-6">
+            <h2 className='theme-heading mb-4 border-b border-[#ead7c3] pb-3 text-xl'>Send Us a Message</h2>
             <form ref={form} onSubmit={handleSubmit} className="flex flex-col gap-4">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+                <label htmlFor="name" className="mb-1 block text-sm font-medium text-[#6f5648]">Your Name</label>
                 <input
                   type="text"
                   id="name"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
+                  className="w-full rounded-xl border border-[#d9c5b1] bg-white px-3 py-2 text-[#3f2d24] focus:outline-none focus:ring-2 focus:ring-[#d7b69f]"
                   required
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                <label htmlFor="email" className="mb-1 block text-sm font-medium text-[#6f5648]">Email Address</label>
                 <input
                   type="email"
                   id="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
+                  className="w-full rounded-xl border border-[#d9c5b1] bg-white px-3 py-2 text-[#3f2d24] focus:outline-none focus:ring-2 focus:ring-[#d7b69f]"
                   required
                 />
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                <label htmlFor="subject" className="mb-1 block text-sm font-medium text-[#6f5648]">Subject</label>
                 <input
                   type="text"
                   id="subject"
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
+                  className="w-full rounded-xl border border-[#d9c5b1] bg-white px-3 py-2 text-[#3f2d24] focus:outline-none focus:ring-2 focus:ring-[#d7b69f]"
                   required
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                <label htmlFor="message" className="mb-1 block text-sm font-medium text-[#6f5648]">Message</label>
                 <textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   rows="6"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
+                  className="w-full rounded-xl border border-[#d9c5b1] bg-white px-3 py-2 text-[#3f2d24] focus:outline-none focus:ring-2 focus:ring-[#d7b69f]"
                   required
                 ></textarea>
               </div>
@@ -160,76 +182,59 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className={`bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition-colors mt-2 flex justify-center items-center ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}
+                className={`theme-button-primary mt-2 flex items-center justify-center rounded-full px-4 py-3 tracking-[0.18em] ${loading ? 'cursor-not-allowed opacity-70' : ''}`}
               >
-                {loading ? (
-                  <>
-                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Sending...
-                  </>
-                ) : 'Send Message'}
+                {loading ? 'Sending...' : 'Send Message'}
               </button>
 
               {status === 'success' && (
-                <div className="mt-3 p-3 bg-green-100 text-green-700 rounded-md">
-                  Thank you for your message! We'll get back to you soon.
+                <div className="mt-3 rounded-md bg-green-100 p-3 text-green-700">
+                  Thank you for your message! We&apos;ll get back to you soon.
                 </div>
               )}
 
               {status === 'error' && (
-                <div className="mt-3 p-3 bg-red-100 text-red-700 rounded-md">
+                <div className="mt-3 rounded-md bg-red-100 p-3 text-red-700">
                   Failed to send message. Please try again later or contact us directly.
                 </div>
               )}
             </form>
-
-          </div>
-          <div>
-            <div className="my-6"></div>
-
           </div>
 
-          {/* Social Media Icons */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className='font-semibold text-xl text-gray-800 border-b pb-3 mb-4'>Connect With Us</h2>
+          <div className="my-6"></div>
+
+          <div className="theme-panel rounded-[1.75rem] p-6">
+            <h2 className='theme-heading mb-4 border-b border-[#ead7c3] pb-3 text-xl'>Connect With Us</h2>
             <div className="flex gap-4">
-              {/* Facebook */}
-              <a href="https://www.facebook.com/share/1H3mRACwCD/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="bg-gray-100 p-3 rounded-full hover:bg-blue-100 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-700">
+              <a href="https://www.facebook.com/share/1H3mRACwCD/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className={socialButtonClass}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#6f5648]">
                   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                 </svg>
               </a>
-              {/* Instagram */}
-              <a href="https://www.instagram.com/yourzevents?igsh=MTBlbWR6d2N3enRzNw==" target="_blank" rel="noopener noreferrer" className="bg-gray-100 p-3 rounded-full hover:bg-pink-100 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-700">
+              <a href="https://www.instagram.com/yourzevents?igsh=MTBlbWR6d2N3enRzNw==" target="_blank" rel="noopener noreferrer" className={socialButtonClass}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#6f5648]">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                   <path d="M16 11.37a4 4 0 1 1-7.94 1.68 4 4 0 0 1 7.94-1.68z"></path>
                   <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                 </svg>
               </a>
-              {/* TikTok */}
-              <a href="https://www.tiktok.com/@yourz.events?_r=1&_t=ZN-93FbDOu8FaY" target="_blank" rel="noopener noreferrer" className="bg-gray-100 p-3 rounded-full hover:bg-cyan-100 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48" fill="none">
+              <a href="https://www.tiktok.com/@yourz.events?_r=1&_t=ZN-93FbDOu8FaY" target="_blank" rel="noopener noreferrer" className={socialButtonClass}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48" fill="none" className="text-[#6f5648]">
                   <path d="M32 12h-4v16.8c0 2.2.8 4.2 2.2 5.8 1.5 1.7 3.6 2.6 5.8 2.6 4.4 0 8-3.6 8-8V22h-4v6.6c0 2.2-1.8 4-4 4-1.1 0-2.1-.4-2.9-1.1-1.7-1.4-2.9-3.5-2.9-5.9V12z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   <path d="M24 24c-4.4 0-8-3.6-8-8s3.6-8 8-8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </a>
-              {/* YouTube */}
-              <a href="https://youtube.com/@yourzevents?si=eGgFt-O_hyB3A9II" target="_blank" rel="noopener noreferrer" className="bg-gray-100 p-3 rounded-full hover:bg-red-100 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 576 512" fill="currentColor" className="text-gray-700">
+              <a href="https://youtube.com/@yourzevents?si=eGgFt-O_hyB3A9II" target="_blank" rel="noopener noreferrer" className={socialButtonClass}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 576 512" fill="currentColor" className="text-[#6f5648]">
                   <path d="M549.655 124.083c-6.281-23.65-24.85-42.027-48.545-48.333C458.353 64 288 64 288 64s-170.353 0-213.11 11.75c-23.695 6.307-42.264 24.683-48.545 48.333C16 166.842 16 256 16 256s0 89.158 10.345 131.917c6.281 23.65 24.85 42.027 48.545 48.333C117.647 448 288 448 288 448s170.353 0 213.11-11.75c23.695-6.307 42.264-24.683 48.545-48.333C560 345.158 560 256 560 256s0-89.158-10.345-131.917zM232 334V178l142 78-142 78z"/>
                 </svg>
               </a>
-              {/* Gmail Icon */}
               <a
                 href="https://mail.google.com/mail/?view=cm&fs=1&to=yourzevents1@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Gmail"
-                className="bg-gray-100 p-3 rounded-full hover:bg-red-100 transition-colors"
+                className={socialButtonClass}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -241,7 +246,7 @@ const Contact = () => {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="text-gray-700"
+                  className="text-[#6f5648]"
                 >
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                   <polyline points="22,6 12,13 2,6" />
@@ -249,38 +254,17 @@ const Contact = () => {
               </a>
             </div>
           </div>
-
-
         </div>
-
       </div>
 
-      {/* FAQ Section */}
-      <div className="bg-white py-10 px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-semibold text-center mb-8">Frequently Asked Questions</h2>
+      <div className="rounded-[2rem] bg-[linear-gradient(180deg,rgba(255,255,255,0.7),rgba(247,235,220,0.75))] px-4 py-10">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="theme-heading mb-8 text-center text-2xl">Frequently Asked Questions</h2>
           <div className="grid gap-4">
-            {[
-              {
-                question: "What are your shipping options?",
-                answer: "We offer standard shipping (3-5 business days), express shipping (1-2 business days), and international shipping options. Shipping costs vary based on location and selected shipping method."
-              },
-              {
-                question: "How can I track my order?",
-                answer: "Once your order is shipped, you will receive a confirmation email with tracking information. You can use this tracking number to monitor your shipment's progress."
-              },
-              {
-                question: "What is your return policy?",
-                answer: "We accept returns within 30 days of purchase. Items must be in original condition with tags attached. Please contact our customer service team to initiate a return."
-              },
-              {
-                question: "Do you offer international shipping?",
-                answer: "Yes, we ship to most countries worldwide. International shipping rates and delivery times vary by location."
-              }
-            ].map((faq, index) => (
-              <div key={index} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
-                <h3 className="font-medium text-lg mb-2">{faq.question}</h3>
-                <p className="text-gray-600">{faq.answer}</p>
+            {faqs.map((faq) => (
+              <div key={faq.question} className="theme-panel rounded-[1.25rem] p-4 transition-shadow hover:shadow-md">
+                <h3 className="mb-2 text-lg font-medium text-[#3f2d24]">{faq.question}</h3>
+                <p className="theme-section-copy">{faq.answer}</p>
               </div>
             ))}
           </div>

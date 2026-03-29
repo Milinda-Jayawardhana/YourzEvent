@@ -1,4 +1,3 @@
-import React from 'react'
 import Hero from '../components/Hero'
 import LatestCollection from '../components/LatestCollection'
 import BestSeller from '../components/BestSeller'
@@ -7,7 +6,7 @@ import NewsLetterBox from '../components/NewsLetterBox'
 
 const Home = () => {
   return (
-    <div>
+    <div className='pb-12'>
       <Hero />
       <LatestCollection />
       <BestSeller/>

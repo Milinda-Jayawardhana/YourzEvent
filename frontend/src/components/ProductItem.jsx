@@ -1,26 +1,11 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext';
 import { useContext } from 'react';
-import { assets } from '../assets/assets';
+import PropTypes from 'prop-types';
 import { BsCartPlus  } from "react-icons/bs";
 
 const ProductItem = ({id, image, name, price, stockStatus}) => {
     const {currency} = useContext(ShopContext);
-
-    // Function to determine stock status styling
-    const getStockStatusStyle = () => {
-        switch(stockStatus) {
-            case 'In Stock':
-                return 'text-gray-600';
-            case 'Out of Stock':
-                return 'text-gray-600';
-            case 'Limited Stock':
-                return 'text-orange-500';
-            default:
-                return 'text-gray-600';
-        }
-    };
 
     // Function to determine badge styling for out of stock items
     const getBadgeStyle = () => {
@@ -37,11 +22,11 @@ const ProductItem = ({id, image, name, price, stockStatus}) => {
     };
 
     return (
-        <Link className='text-gray-700 cursor-pointer' to={`/product/${id}`}>
+        <Link className='cursor-pointer text-[#4b362c]' to={`/product/${id}`}>
             {/* Fixed aspect ratio container */}
-            <div className='relative w-full aspect-square overflow-hidden bg-white border border-gray-100'>
+            <div className='relative w-full aspect-square overflow-hidden rounded-[1.5rem] border border-[#ead7c3] bg-[linear-gradient(180deg,rgba(255,250,244,0.96),rgba(247,235,220,0.78))]'>
                 <img 
-                    className='absolute inset-0 w-full h-full object-contain p-4 hover:scale-105 transition ease-in-out' 
+                    className='absolute inset-0 w-full h-full object-contain p-4 transition ease-in-out hover:scale-105' 
                     src={image[0]} 
                     alt={name}
                 />
@@ -65,7 +50,7 @@ const ProductItem = ({id, image, name, price, stockStatus}) => {
                                     e.stopPropagation();
                                     if (typeof addToCart === 'function') addToCart(id, 1);
                                 }}
-                                className={`bg-blue-600 hover:bg-blue-700 px-2 py-1 rounded shadow-md flex items-center justify-center ${stockStatus === 'Out of Stock' ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
+                                className={`flex items-center justify-center rounded-full border border-[#ad7a5f] bg-[#3f2d24] px-2.5 py-1.5 shadow-md transition-colors hover:bg-[#8f624b] ${stockStatus === 'Out of Stock' ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
                                 aria-label={`Add ${name} to cart`}
                                 title="Add to cart"
                                 disabled={stockStatus === 'Out of Stock'}
@@ -78,11 +63,19 @@ const ProductItem = ({id, image, name, price, stockStatus}) => {
 
             </div>
             <div className='flex justify-between items-center pt-3 pb-1'>
-                <p className='text-sm'>{name}</p>
-                <p className='text-sm font-medium'>{currency}{price}</p>
+                <p className='text-sm text-[#5d4639]'>{name}</p>
+                <p className='text-sm font-medium text-[#3f2d24]'>{currency}{price}</p>
             </div>
         </Link>
     )
 }
 
 export default ProductItem
+
+ProductItem.propTypes = {
+    id: PropTypes.string.isRequired,
+    image: PropTypes.arrayOf(PropTypes.string).isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    stockStatus: PropTypes.string
+}

@@ -24,37 +24,35 @@ import Policy from './pages/Policy'
 
 const App = () => {
   return (
-    < div className='px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw] max-w-[1920px] mx-auto '>
+    <div className='min-h-screen bg-transparent'>
       <ToastContainer/>
       <ScrollToTop />
-      <Navbar />
-      <div className="mt-[90px]">
-      <SearchBar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/collection' element={<FlowerBouquets />} />
-        <Route path='/services' element={<Services />} />
-        <Route path='/services/events' element={<Events />} />
-        <Route path='/services/floral-arrangements/flower-bouquets' element={<FlowerBouquets />} />
-        <Route path='/services/floral-arrangements/gift-items-packages' element={<GiftPackages />} />
-        <Route path='/contact' element={<Contact/>} />
-        <Route path='/about' element={<About />} />
-        <Route path='/product/:productId' element={<Product/>} />
-        <Route path='/login' element={<Login/>} />
-        <Route path='/place-order' element={<PlaceOrder/>} />
-        <Route path='/cart' element={<Cart/>} />
-        <Route path='/orders' element={<Orders/>} />
-        <Route path='/terms-and-conditions' element={<Terms/>} />
-        <Route path='/privacy-and-policy' element={<Policy/>} />
-        <Route path='/return-policy' element={<Returns/>} />               
-      </Routes>  
+      <div className='mx-auto max-w-[1920px] px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]'>
+        <Navbar />
+        <div className="mt-[90px]">
+          <SearchBar />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/collection' element={<FlowerBouquets />} />
+            <Route path='/services' element={<Services />} />
+            <Route path='/services/events' element={<Events />} />
+            <Route path='/services/floral-arrangements/flower-bouquets' element={<FlowerBouquets />} />
+            <Route path='/services/floral-arrangements/gift-items-packages' element={<GiftPackages />} />
+            <Route path='/contact' element={<Contact/>} />
+            <Route path='/about' element={<About />} />
+            <Route path='/product/:productId' element={<Product/>} />
+            <Route path='/login' element={<Login/>} />
+            <Route path='/place-order' element={<PlaceOrder/>} />
+            <Route path='/cart' element={<Cart/>} />
+            <Route path='/orders' element={<Orders/>} />
+            <Route path='/terms-and-conditions' element={<Terms/>} />
+            <Route path='/privacy-and-policy' element={<Policy/>} />
+            <Route path='/return-policy' element={<Returns/>} />               
+          </Routes>  
+        </div>
+        <WhatsAppFloat />
+        <Footer/>
       </div>
-      <WhatsAppFloat />
-
-       <Footer/>
-    
-    
-    
    </div>
   )
 }

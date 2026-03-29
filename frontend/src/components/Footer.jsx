@@ -1,116 +1,149 @@
 import { assets } from '../assets/assets'
 
+const companyLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'About Us', href: '/about' },
+  { label: 'Our Services', href: '/services' },
+  { label: 'Flower Bouquets', href: '/services/floral-arrangements/flower-bouquets' }
+]
+
+const policyLinks = [
+  { label: 'Terms and Conditions', href: '/terms-and-conditions' },
+  { label: 'Privacy Policy', href: '/privacy-and-policy' },
+  { label: 'Return Policy', href: '/return-policy' },
+  { label: 'Contact Us', href: '/contact' }
+]
+
+const socialLinks = [
+  {
+    href: 'https://www.facebook.com/share/1H3mRACwCD/?mibextid=wwXIfr',
+    label: 'Facebook',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+      </svg>
+    )
+  },
+  {
+    href: 'https://www.instagram.com/yourzevents?igsh=MTBlbWR6d2N3enRzNw==',
+    label: 'Instagram',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+        <path d="M16 11.37a4 4 0 1 1-7.94 1.68 4 4 0 0 1 7.94-1.68z"></path>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+      </svg>
+    )
+  },
+  {
+    href: 'https://www.tiktok.com/@yourz.events?_r=1&_t=ZN-93FbDOu8FaY',
+    label: 'TikTok',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 48 48" fill="none">
+        <path d="M32 12h-4v16.8c0 2.2.8 4.2 2.2 5.8 1.5 1.7 3.6 2.6 5.8 2.6 4.4 0 8-3.6 8-8V22h-4v6.6c0 2.2-1.8 4-4 4-1.1 0-2.1-.4-2.9-1.1-1.7-1.4-2.9-3.5-2.9-5.9V12z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M24 24c-4.4 0-8-3.6-8-8s3.6-8 8-8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    )
+  },
+  {
+    href: 'https://youtube.com/@yourzevents?si=eGgFt-O_hyB3A9II',
+    label: 'YouTube',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 576 512" fill="currentColor">
+        <path d="M549.655 124.083c-6.281-23.65-24.85-42.027-48.545-48.333C458.353 64 288 64 288 64s-170.353 0-213.11 11.75c-23.695 6.307-42.264 24.683-48.545 48.333C16 166.842 16 256 16 256s0 89.158 10.345 131.917c6.281 23.65 24.85 42.027 48.545 48.333C117.647 448 288 448 288 448s170.353 0 213.11-11.75c23.695-6.307 42.264-24.683 48.545-48.333C560 345.158 560 256 560 256s0-89.158-10.345-131.917zM232 334V178l142 78-142 78z"/>
+      </svg>
+    )
+  },
+  {
+    href: 'https://mail.google.com/mail/?view=cm&fs=1&to=yourzevents1@gmail.com',
+    label: 'Gmail',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+        <polyline points="22,6 12,13 2,6" />
+      </svg>
+    )
+  }
+]
+
 const Footer = () => {
   return (
-    <div>
-      <div className='flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 my-10 mt-30 text-sm'>
-        <div>
-          <img src="/logo.jpeg" alt="Logo" className='mb-5 w-32' />
-          <p className='w-full md:w-2/3 text-gray-600'>
+    <footer className='mt-12 rounded-t-[2.25rem] border border-[#ead7c3] bg-[linear-gradient(180deg,rgba(255,250,244,0.92),rgba(243,228,214,0.92))] px-5 pt-6 sm:px-6'>
+      <div className='grid gap-6 border-b border-[#d9c5b1] pb-5 sm:grid-cols-[1.4fr_1fr_1fr] sm:gap-8'>
+        <div className='pr-0 sm:pr-8'>
+          <img src="/logo.jpeg" alt="Logo" className='mb-3 w-24' />
+          <p className='text-sm leading-6 theme-section-copy'>
             Blooming Emotions, One Bouquet at a Time.
           </p>
         </div>
-        <div>
-          <p className='text-xl font-medium mb-5'>COMPANY</p>
-          <ul className='flex flex-col gap-1 text-gray-600'>
-            <li><a href="/" className="hover:text-gray-900 transition-colors">Home</a></li>
-            <li><a href="/about" className="hover:text-gray-900 transition-colors">About Us</a></li>
-            <li><a href="/services" className="hover:text-gray-900 transition-colors">Our Services</a></li>
-            <li><a href="/services/floral-arrangements/flower-bouquets" className="hover:text-gray-900 transition-colors">Flower Bouquets</a></li>
-            <li><a href="/terms-and-conditions" className="hover:text-gray-900 transition-colors">Terms and Conditions</a></li>
-            <li><a href="/privacy-and-policy" className="hover:text-gray-900 transition-colors">Privacy Policy</a></li>
-            <li><a href="/return-policy" className="hover:text-gray-900 transition-colors">Return Policy</a></li>
 
+        <div className='grid grid-cols-2 gap-5 sm:col-span-2'>
+          <div>
+            <p className='theme-heading mb-3 text-base'>Company</p>
+            <ul className='space-y-1.5 text-sm theme-section-copy'>
+              {companyLinks.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} className="transition-colors hover:text-[#3f2d24]">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            <li><a href="/contact" className="hover:text-gray-900 transition-colors">Contact Us</a></li>
-          </ul>
+          <div>
+            <p className='theme-heading mb-3 text-base'>Policies & Contact</p>
+            <ul className='space-y-1.5 text-sm theme-section-copy'>
+              {policyLinks.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} className="transition-colors hover:text-[#3f2d24]">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-        <div>
-          <p className='text-xl font-medium mb-5'>GET IN TOUCH</p>
 
-
-          <div className="flex gap-4 mt-6">
-            {/* Facebook Icon */}
-            <a href="https://www.facebook.com/share/1H3mRACwCD/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-gray-600 hover:text-blue-600 transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-              </svg>
-            </a>
-            {/* Instagram Icon */}
-            <a href="https://www.instagram.com/yourzevents?igsh=MTBlbWR6d2N3enRzNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-gray-600 hover:text-pink-500 transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path d="M16 11.37a4 4 0 1 1-7.94 1.68 4 4 0 0 1 7.94-1.68z"></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-              </svg>
-            </a>
-            {/* TikTok Icon */}
-            <a href="https://www.tiktok.com/@yourz.events?_r=1&_t=ZN-93FbDOu8FaY" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="text-gray-600 hover:text-cyan-500 transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48" fill="none">
-                <path d="M32 12h-4v16.8c0 2.2.8 4.2 2.2 5.8 1.5 1.7 3.6 2.6 5.8 2.6 4.4 0 8-3.6 8-8V22h-4v6.6c0 2.2-1.8 4-4 4-1.1 0-2.1-.4-2.9-1.1-1.7-1.4-2.9-3.5-2.9-5.9V12z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M24 24c-4.4 0-8-3.6-8-8s3.6-8 8-8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </a>
-            {/* YouTube Icon */}
-            <a href="https://youtube.com/@yourzevents?si=eGgFt-O_hyB3A9II" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="text-gray-600 hover:text-red-600 transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 576 512" fill="currentColor">
-                <path d="M549.655 124.083c-6.281-23.65-24.85-42.027-48.545-48.333C458.353 64 288 64 288 64s-170.353 0-213.11 11.75c-23.695 6.307-42.264 24.683-48.545 48.333C16 166.842 16 256 16 256s0 89.158 10.345 131.917c6.281 23.65 24.85 42.027 48.545 48.333C117.647 448 288 448 288 448s170.353 0 213.11-11.75c23.695-6.307 42.264-24.683 48.545-48.333C560 345.158 560 256 560 256s0-89.158-10.345-131.917zM232 334V178l142 78-142 78z"/>
-              </svg>
-            </a>
-
-            {/* Gmail Icon */}
-            <a
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=yourzevents1@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Gmail"
-              className="text-gray-600 hover:text-red-600 transition-colors"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                <polyline points="22,6 12,13 2,6" />
-              </svg>
-            </a>
-
-
+        <div className='sm:col-span-3'>
+          <div className='flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between'>
+            <p className='theme-heading text-base'>Get In Touch</p>
+            <div className="flex flex-wrap gap-3 text-[#6f5648]">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="rounded-full border border-[#d9c5b1] bg-white/70 p-2.5 transition-colors hover:bg-white hover:text-[#3f2d24]"
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>
-      <div>
-        <hr />
-        <div className='flex justify-between items-center py-5 pr-16 sm:pr-4'>
-          <p className='text-sm text-center flex-1'>Copyright 2026@YourzEvents - All Rights Reserved.</p>
-          <div className='flex flex-col items-center gap-1'>
-            <span className='text-xs text-gray-600'>Powered by</span>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=kausuru23@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src={assets.company}
-                alt="Company Logo"
-                className="h-5 w-auto hover:opacity-80 transition-opacity cursor-pointer"
-              />
-            </a>
 
-          </div>
+      <div className='flex flex-col gap-3 py-4 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left'>
+        <p className='text-sm theme-section-copy'>Copyright 2026@YourzEvents - All Rights Reserved.</p>
+        <div className='flex items-center justify-center gap-2 sm:justify-end'>
+          <span className='text-xs theme-section-copy'>Powered by</span>
+          <a
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=shehanj809@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src={assets.company}
+              alt="Company Logo"
+              className="h-5 w-auto cursor-pointer transition-opacity hover:opacity-80"
+            />
+          </a>
         </div>
       </div>
-      <div>
-        <hr />
-
-      </div>
-    </div>
+    </footer>
   )
 }
 
