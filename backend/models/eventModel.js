@@ -7,8 +7,8 @@ const eventSchema = new mongoose.Schema(
     images: {
       type: [String],
       validate: {
-        validator: (value) => Array.isArray(value) && value.length === 4,
-        message: "An event must contain exactly 4 images",
+        validator: (value) => Array.isArray(value) && value.length >= 1 && value.length <= 4,
+        message: "An event must contain between 1 and 4 images",
       },
       required: true,
     },
