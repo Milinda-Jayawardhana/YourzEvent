@@ -48,17 +48,12 @@ const Profile = () => {
     loadOrderData();
   }, [token]);
 
-  const profileStats = useMemo(() => {
-    const totalOrders = orders.length;
-    const totalSpent = orders.reduce((sum, order) => sum + order.totalAmount, 0);
-    const latestOrder = orders[0];
-
-    return {
-      totalOrders,
-      totalSpent,
-      latestStatus: latestOrder?.status || 'No orders yet'
-    };
-  }, [orders]);
+  const profileStats = useMemo(
+    () => ({
+      totalOrders: orders.length
+    }),
+    [orders]
+  );
 
   return (
     <div className="border-t border-[#efe3d7] pb-16 pt-12">
@@ -88,21 +83,10 @@ const Profile = () => {
             </div>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-1">
             <div className="rounded-[1.5rem] border border-[#eadcca] bg-white p-5">
               <p className="text-xs uppercase tracking-[0.22em] text-[#b27b5d]">Total Orders</p>
               <p className="mt-3 text-3xl font-['Prata'] text-[#3f2d24]">{profileStats.totalOrders}</p>
-            </div>
-            <div className="rounded-[1.5rem] border border-[#eadcca] bg-white p-5">
-              <p className="text-xs uppercase tracking-[0.22em] text-[#b27b5d]">Total Spent</p>
-              <p className="mt-3 text-3xl font-['Prata'] text-[#3f2d24]">
-                {currency}
-                {profileStats.totalSpent.toFixed(2)}
-              </p>
-            </div>
-            <div className="rounded-[1.5rem] border border-[#eadcca] bg-white p-5">
-              <p className="text-xs uppercase tracking-[0.22em] text-[#b27b5d]">Latest Status</p>
-              <p className="mt-3 text-lg font-medium text-[#3f2d24]">{profileStats.latestStatus}</p>
             </div>
           </div>
         </section>
