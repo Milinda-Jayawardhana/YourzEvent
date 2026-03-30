@@ -3,11 +3,13 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 import { backendUrl } from '../App';
+import { MAJOR_CATEGORIES, filterCategoriesByMajorCategory } from '../utils/categoryHelpers';
 
 const Categories = ({ token }) => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [newCategory, setNewCategory] = useState('');
+  const [selectedMajorCategory, setSelectedMajorCategory] = useState(MAJOR_CATEGORIES[0]);
   const [subCategoryDrafts, setSubCategoryDrafts] = useState({});
   const [editingCategoryId, setEditingCategoryId] = useState('');
   const [editingCategoryName, setEditingCategoryName] = useState('');
@@ -18,6 +20,10 @@ const Categories = ({ token }) => {
   });
 
   const authConfig = useMemo(() => ({ headers: { token } }), [token]);
+  const visibleCategories = useMemo(
+    () => filterCategoriesByMajorCategory(categories, selectedMajorCategory),
+    [categories, selectedMajorCategory]
+  );
 
   const fetchCategories = async () => {
     try {
@@ -51,7 +57,7 @@ const Categories = ({ token }) => {
     try {
       const response = await axios.post(
         `${backendUrl}/api/category/add`,
-        { name: newCategory },
+        { name: newCategory, majorCategory: selectedMajorCategory },
         authConfig
       );
 
@@ -76,7 +82,7 @@ const Categories = ({ token }) => {
     try {
       const response = await axios.put(
         `${backendUrl}/api/category/${categoryId}`,
-        { name: editingCategoryName },
+        { name: editingCategoryName, majorCategory: selectedMajorCategory },
         authConfig
       );
 
@@ -187,8 +193,23 @@ const Categories = ({ token }) => {
       <div className="mb-6">
         <h2 className="text-2xl font-semibold text-gray-800">Add Categories</h2>
         <p className="mt-1 text-sm text-gray-500">
-          Manage categories and subcategories for product creation and storefront filters.
+          Manage categories and subcategories separately for flower bouquets and gift items.
         </p>
+      </div>
+
+      <div className="mb-6 max-w-sm rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+        <label className="mb-2 block text-sm font-medium text-gray-700">Major Category</label>
+        <select
+          value={selectedMajorCategory}
+          onChange={(event) => setSelectedMajorCategory(event.target.value)}
+          className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-black"
+        >
+          {MAJOR_CATEGORIES.map((item) => (
+            <option key={item} value={item}>
+              {item}
+            </option>
+          ))}
+        </select>
       </div>
 
       <form
@@ -212,13 +233,13 @@ const Categories = ({ token }) => {
 
       {loading ? (
         <p className="text-sm text-gray-500">Loading categories...</p>
-      ) : categories.length === 0 ? (
+      ) : visibleCategories.length === 0 ? (
         <div className="rounded-xl border border-dashed border-gray-300 bg-white p-8 text-center text-sm text-gray-500">
-          No categories yet. Add the first category to get started.
+          No categories yet for {selectedMajorCategory}. Add the first category to get started.
         </div>
       ) : (
         <div className="space-y-4">
-          {categories.map((category) => {
+          {visibleCategories.map((category) => {
             const isEditingCategory = editingCategoryId === category._id;
 
             return (

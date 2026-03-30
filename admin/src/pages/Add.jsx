@@ -4,7 +4,11 @@ import axios from 'axios';
 import { backendUrl } from '../App';
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
-import { getCategoryOptions, getSelectionForCategory } from '../utils/categoryHelpers';
+import {
+  MAJOR_CATEGORIES,
+  getCategoryOptions,
+  getSelectionForCategory
+} from '../utils/categoryHelpers';
 
 const compressImage = async (file, maxSizeMB = 2, qualityTarget = 0.8) => {
   if (file.size / 1024 / 1024 < maxSizeMB) return file;
@@ -74,7 +78,7 @@ const Add = ({ token }) => {
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const [majorCategory, setMajorCategory] = useState('Flower Bouquets');
+  const [majorCategory, setMajorCategory] = useState(MAJOR_CATEGORIES[0]);
   const [category, setCategory] = useState('');
   const [subCategory, setSubCategory] = useState('');
   const [price, setPrice] = useState('');
@@ -86,9 +90,15 @@ const Add = ({ token }) => {
     return selectedCategory?.subcategories || [];
   }, [categories, category]);
 
-  const fetchCategories = async (currentCategory = '', currentSubCategory = '') => {
+  const fetchCategories = async (
+    selectedMajorCategory = majorCategory,
+    currentCategory = '',
+    currentSubCategory = ''
+  ) => {
     try {
-      const response = await axios.get(`${backendUrl}/api/category/list`);
+      const response = await axios.get(`${backendUrl}/api/category/list`, {
+        params: { majorCategory: selectedMajorCategory }
+      });
 
       if (response.data.success) {
         const categoryOptions = getCategoryOptions(response.data.categories);
@@ -110,8 +120,8 @@ const Add = ({ token }) => {
   };
 
   useEffect(() => {
-    fetchCategories();
-  }, []);
+    fetchCategories(majorCategory);
+  }, [majorCategory]);
 
   useEffect(() => {
     let size = 0;
@@ -292,8 +302,11 @@ const Add = ({ token }) => {
             onChange={(event) => setMajorCategory(event.target.value)}
             className="px-3 py-2"
           >
-            <option value="Flower Bouquets">Flower Bouquets</option>
-            <option value="Gift Items">Gift Items</option>
+            {MAJOR_CATEGORIES.map((item) => (
+              <option key={item} value={item}>
+                {item}
+              </option>
+            ))}
           </select>
         </div>
 

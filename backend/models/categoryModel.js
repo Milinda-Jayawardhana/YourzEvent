@@ -9,7 +9,14 @@ const subCategorySchema = new mongoose.Schema(
 
 const categorySchema = new mongoose.Schema(
   {
-    name: { type: String, required: true, trim: true, unique: true },
+    majorCategory: {
+      type: String,
+      enum: ["Flower Bouquets", "Gift Items"],
+      default: "Flower Bouquets",
+      required: true,
+      trim: true,
+    },
+    name: { type: String, required: true, trim: true },
     subcategories: {
       type: [subCategorySchema],
       default: [],
@@ -24,6 +31,8 @@ const categorySchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+categorySchema.index({ majorCategory: 1, name: 1 }, { unique: true });
 
 const categoryModel =
   mongoose.models.category || mongoose.model("Category", categorySchema);

@@ -3,23 +3,30 @@ export const buildCategoryTreeFromProducts = (products = []) => {
 
   products.forEach((product) => {
     if (!product.category) return;
+    const majorCategory = product.majorCategory || "Flower Bouquets";
+    const categoryKey = `${majorCategory}::${product.category}`;
 
-    if (!categoryMap.has(product.category)) {
-      categoryMap.set(product.category, new Set());
+    if (!categoryMap.has(categoryKey)) {
+      categoryMap.set(categoryKey, {
+        majorCategory,
+        name: product.category,
+        subcategories: new Set(),
+      });
     }
 
     if (product.subCategory) {
-      categoryMap.get(product.category).add(product.subCategory);
+      categoryMap.get(categoryKey).subcategories.add(product.subCategory);
     }
   });
 
-  return Array.from(categoryMap.entries())
-    .map(([name, subcategories]) => ({
-      _id: name,
+  return Array.from(categoryMap.values())
+    .map(({ majorCategory, name, subcategories }) => ({
+      _id: `${majorCategory}-${name}`,
+      majorCategory,
       name,
       subcategories: Array.from(subcategories)
         .sort((left, right) => left.localeCompare(right))
-        .map((subName) => ({ _id: `${name}-${subName}`, name: subName })),
+        .map((subName) => ({ _id: `${majorCategory}-${name}-${subName}`, name: subName })),
     }))
     .sort((left, right) => left.name.localeCompare(right.name));
 };

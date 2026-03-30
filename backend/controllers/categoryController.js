@@ -2,10 +2,18 @@ import categoryModel from "../models/categoryModel.js";
 import productModel from "../models/productModel.js";
 
 const normalizeName = (value = "") => value.trim().replace(/\s+/g, " ");
+const normalizeMajorCategory = (value = "") => normalizeName(value);
+const MAJOR_CATEGORIES = ["Flower Bouquets", "Gift Items"];
+const buildNameRegex = (name) => ({
+  $regex: `^${name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`,
+  $options: "i",
+});
 
 const listCategories = async (req, res) => {
   try {
-    const categories = await categoryModel.find({}).sort({ name: 1 });
+    const majorCategory = normalizeMajorCategory(req.query.majorCategory);
+    const filter = majorCategory ? { majorCategory } : {};
+    const categories = await categoryModel.find(filter).sort({ majorCategory: 1, name: 1 });
     res.json({ success: true, categories });
   } catch (error) {
     console.log(error);
@@ -16,20 +24,29 @@ const listCategories = async (req, res) => {
 const addCategory = async (req, res) => {
   try {
     const name = normalizeName(req.body.name);
+    const majorCategory = normalizeMajorCategory(req.body.majorCategory);
 
     if (!name) {
       return res.json({ success: false, message: "Category name is required" });
     }
 
+    if (!MAJOR_CATEGORIES.includes(majorCategory)) {
+      return res.json({
+        success: false,
+        message: "Major category must be Flower Bouquets or Gift Items",
+      });
+    }
+
     const existing = await categoryModel.findOne({
-      name: { $regex: `^${name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, $options: "i" },
+      majorCategory,
+      name: buildNameRegex(name),
     });
 
     if (existing) {
       return res.json({ success: false, message: "Category already exists" });
     }
 
-    await categoryModel.create({ name, subcategories: [] });
+    await categoryModel.create({ majorCategory, name, subcategories: [] });
     res.json({ success: true, message: "Category added successfully" });
   } catch (error) {
     console.log(error);
@@ -40,10 +57,18 @@ const addCategory = async (req, res) => {
 const updateCategory = async (req, res) => {
   try {
     const name = normalizeName(req.body.name);
+    const majorCategory = normalizeMajorCategory(req.body.majorCategory);
     const { id } = req.params;
 
     if (!name) {
       return res.json({ success: false, message: "Category name is required" });
+    }
+
+    if (!MAJOR_CATEGORIES.includes(majorCategory)) {
+      return res.json({
+        success: false,
+        message: "Major category must be Flower Bouquets or Gift Items",
+      });
     }
 
     const category = await categoryModel.findById(id);
@@ -53,7 +78,8 @@ const updateCategory = async (req, res) => {
 
     const existing = await categoryModel.findOne({
       _id: { $ne: id },
-      name: { $regex: `^${name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, $options: "i" },
+      majorCategory,
+      name: buildNameRegex(name),
     });
 
     if (existing) {
@@ -61,10 +87,15 @@ const updateCategory = async (req, res) => {
     }
 
     const previousName = category.name;
+    const previousMajorCategory = category.majorCategory;
+    category.majorCategory = majorCategory;
     category.name = name;
     await category.save();
 
-    await productModel.updateMany({ category: previousName }, { $set: { category: name } });
+    await productModel.updateMany(
+      { majorCategory: previousMajorCategory, category: previousName },
+      { $set: { majorCategory, category: name } }
+    );
 
     res.json({ success: true, message: "Category updated successfully" });
   } catch (error) {
@@ -82,7 +113,10 @@ const deleteCategory = async (req, res) => {
       return res.json({ success: false, message: "Category not found" });
     }
 
-    const linkedProducts = await productModel.countDocuments({ category: category.name });
+    const linkedProducts = await productModel.countDocuments({
+      majorCategory: category.majorCategory,
+      category: category.name,
+    });
     if (linkedProducts > 0) {
       return res.json({
         success: false,
@@ -163,7 +197,11 @@ const updateSubcategory = async (req, res) => {
     await category.save();
 
     await productModel.updateMany(
-      { category: category.name, subCategory: previousName },
+      {
+        majorCategory: category.majorCategory,
+        category: category.name,
+        subCategory: previousName,
+      },
       { $set: { subCategory: name } }
     );
 
@@ -189,6 +227,7 @@ const deleteSubcategory = async (req, res) => {
     }
 
     const linkedProducts = await productModel.countDocuments({
+      majorCategory: category.majorCategory,
       category: category.name,
       subCategory: subcategory.name,
     });

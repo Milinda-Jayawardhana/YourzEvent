@@ -12,6 +12,9 @@ const Collection = ({ title1 = 'ALL', title2 = 'ITEMS', majorCategory = '' }) =>
   const [subCategory, setSubCategory] = useState([]);
   const [sortType, setSortType] = useState('relavent');
   const [openCategories, setOpenCategories] = useState([]);
+  const visibleCategories = categories.filter(
+    (cat) => !majorCategory || (cat.majorCategory || 'Flower Bouquets') === majorCategory
+  );
 
   const toggleCategoryOpen = (index) => {
     if (openCategories.includes(index)) {
@@ -79,6 +82,11 @@ const Collection = ({ title1 = 'ALL', title2 = 'ITEMS', majorCategory = '' }) =>
     sortProduct();
   }, [sortType]);
 
+  useEffect(() => {
+    setOpenCategories([]);
+    setSubCategory([]);
+  }, [majorCategory]);
+
   return (
     <div className='flex flex-col gap-1 pt-10 sm:gap-10 md:flex-row'>
       <div className='min-w-44 lg:min-w-60'>
@@ -96,11 +104,11 @@ const Collection = ({ title1 = 'ALL', title2 = 'ITEMS', majorCategory = '' }) =>
         <div className={`mt-6 border border-gray-300 py-3 pl-4 ${showFilter ? '' : 'hidden'} md:block`}>
           <p className='mb-3 text-sm font-medium'>CATEGORIES</p>
 
-          {categories.length === 0 ? (
+          {visibleCategories.length === 0 ? (
             <p className='pr-4 text-xs text-gray-500'>No categories available yet.</p>
           ) : (
             <div className='flex flex-col gap-2'>
-              {categories.map((cat, index) => (
+              {visibleCategories.map((cat, index) => (
                 <div key={cat._id || index}>
                   <div
                     onClick={() => toggleCategoryOpen(index)}

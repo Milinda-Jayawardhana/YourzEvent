@@ -2,10 +2,10 @@ import {v2 as cloudinary} from "cloudinary"
 import productModel from "../models/productModel.js"
 import categoryModel from "../models/categoryModel.js"
 
-const validateCategorySelection = async (category, subCategory) => {
-    const categoryDoc = await categoryModel.findOne({ name: category });
+const validateCategorySelection = async (majorCategory, category, subCategory) => {
+    const categoryDoc = await categoryModel.findOne({ majorCategory, name: category });
     if (!categoryDoc) {
-        return "Selected category does not exist";
+        return "Selected category does not exist in the chosen major category";
     }
 
     const hasSubCategory = categoryDoc.subcategories.some(
@@ -37,7 +37,7 @@ const addProduct = async(req, res) => {
             return res.json({ success: false, message: "Major category must be Flower Bouquets or Gift Items" });
         }
 
-        const categoryError = await validateCategorySelection(category, subCategory);
+        const categoryError = await validateCategorySelection(majorCategory, category, subCategory);
         if (categoryError) {
             return res.json({ success: false, message: categoryError });
         }
@@ -106,7 +106,7 @@ const updateProduct = async (req, res) => {
             return res.json({ success: false, message: "Product not found" });
         }
 
-        const categoryError = await validateCategorySelection(category, subCategory);
+        const categoryError = await validateCategorySelection(majorCategory, category, subCategory);
         if (categoryError) {
             return res.json({ success: false, message: categoryError });
         }

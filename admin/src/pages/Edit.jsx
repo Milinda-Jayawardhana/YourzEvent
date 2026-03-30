@@ -5,7 +5,11 @@ import { backendUrl } from '../App';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { getCategoryOptions, getSelectionForCategory } from '../utils/categoryHelpers';
+import {
+  MAJOR_CATEGORIES,
+  getCategoryOptions,
+  getSelectionForCategory
+} from '../utils/categoryHelpers';
 
 const Edit = ({ token }) => {
   const { id } = useParams();
@@ -22,7 +26,7 @@ const Edit = ({ token }) => {
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const [majorCategory, setMajorCategory] = useState('Flower Bouquets');
+  const [majorCategory, setMajorCategory] = useState(MAJOR_CATEGORIES[0]);
   const [category, setCategory] = useState('');
   const [subCategory, setSubCategory] = useState('');
   const [price, setPrice] = useState('');
@@ -35,9 +39,15 @@ const Edit = ({ token }) => {
     return selectedCategory?.subcategories || [];
   }, [categories, category]);
 
-  const fetchCategories = async (currentCategory = '', currentSubCategory = '') => {
+  const fetchCategories = async (
+    selectedMajorCategory = majorCategory,
+    currentCategory = '',
+    currentSubCategory = ''
+  ) => {
     try {
-      const response = await axios.get(`${backendUrl}/api/category/list`);
+      const response = await axios.get(`${backendUrl}/api/category/list`, {
+        params: { majorCategory: selectedMajorCategory }
+      });
 
       if (response.data.success) {
         const categoryOptions = getCategoryOptions(response.data.categories);
@@ -70,10 +80,14 @@ const Edit = ({ token }) => {
         if (product) {
           setName(product.name);
           setDescription(product.description);
-          setMajorCategory(product.majorCategory || 'Flower Bouquets');
+          setMajorCategory(product.majorCategory || MAJOR_CATEGORIES[0]);
           setPrice(product.price);
           setBestseller(product.bestseller);
-          await fetchCategories(product.category, product.subCategory);
+          await fetchCategories(
+            product.majorCategory || MAJOR_CATEGORIES[0],
+            product.category,
+            product.subCategory
+          );
           setDisplayImages({
             image1: product.image?.[0] || null,
             image2: product.image?.[1] || null,
@@ -102,6 +116,12 @@ const Edit = ({ token }) => {
       setSubCategory(availableSubcategories[0]?.name || '');
     }
   }, [availableSubcategories, subCategory]);
+
+  useEffect(() => {
+    if (!loading) {
+      fetchCategories(majorCategory, category, subCategory);
+    }
+  }, [majorCategory]);
 
   const handleImageSelect = (event, imageNumber) => {
     const file = event.target.files[0];
@@ -229,8 +249,11 @@ const Edit = ({ token }) => {
             className="w-full max-w-[500px] px-3 py-2"
             required
           >
-            <option value="Flower Bouquets">Flower Bouquets</option>
-            <option value="Gift Items">Gift Items</option>
+            {MAJOR_CATEGORIES.map((item) => (
+              <option key={item} value={item}>
+                {item}
+              </option>
+            ))}
           </select>
         </div>
 
