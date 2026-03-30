@@ -6,20 +6,18 @@ const serviceCards = [
   {
     title: 'Floral Arrangements',
     description:
-      'Hand-tied bouquets, premium flower styling, gift-ready arrangements, and polished packaging for everyday surprises and meaningful celebrations.',
-    links: [
-      { label: 'Flower Bouquets', to: '/services/floral-arrangements/flower-bouquets' },
-      { label: 'Gift Items & Packages', to: '/services/floral-arrangements/gift-items-packages' }
-    ],
+      'Discover our bespoke floral creations, including luxury bouquets, bridal florals, elegant centerpieces, and decorative installations. From intimate gifts to large-scale event styling, each arrangement is thoughtfully designed using premium blooms and refined artistry to deliver beauty, elegance, and a memorable experience.', links: [
+        { label: 'Flower Bouquets', to: '/services/floral-arrangements/flower-bouquets' },
+        { label: 'Gift Items & Packages', to: '/services/floral-arrangements/gift-items-packages' }
+      ],
     images: ['/s1.jpeg', '/g1.jpeg', '/g2.jpeg', '/s4.jpeg']
   },
   {
     title: 'Events',
     description:
-      'Ceremony florals, table styling, stage concepts, and custom floral storytelling for birthdays, proposals, weddings, launches, and intimate celebrations.',
-    links: [
-      { label: 'Explore Events', to: '/services/events' }
-    ],
+      'We create bespoke event décor and styling for weddings, engagements, private celebrations, and corporate occasions. From sophisticated floral arrangements and stunning stage designs to themed concepts and brand launches, every element is carefully curated to reflect your vision. Whether it’s an intimate gathering or a large-scale event, we deliver elegant, memorable experiences with exceptional attention to detail.', links: [
+        { label: 'Explore Events', to: '/services/events' }
+      ],
     images: ['/e1.jpeg', '/e2.jpeg', '/e3.jpeg', '/e4.jpeg']
   }
 ];
@@ -37,7 +35,9 @@ const SlidingServiceCard = ({ card, isActive, onHover }) => {
         <div className="flex flex-1 flex-col justify-center py-2 lg:py-6">
           <p className="text-xs uppercase tracking-[0.35em] text-[#b48363]">Our Services</p>
           <h2 className="mt-3 font-['Prata'] text-3xl text-[#3f2d24]">{card.title}</h2>
-          <p className="mt-4 max-w-xl text-sm leading-7 text-[#72594a]">{card.description}</p>
+          <p className="mt-4 max-w-xl text-sm leading-7 text-[#72594a] text-justify lg:min-h-[112px]">
+            {card.description}
+          </p>
 
           {isFloralCard ? (
             <div className="mt-8 flex flex-wrap gap-3">
@@ -70,9 +70,8 @@ const SlidingServiceCard = ({ card, isActive, onHover }) => {
           {card.images.map((image, index) => (
             <div
               key={image}
-              className={`overflow-hidden rounded-[1.35rem] border border-white/70 shadow-lg transition-all duration-500 ${
-                isActive && index === 0 ? 'scale-[1.03]' : ''
-              }`}
+              className={`overflow-hidden rounded-[1.35rem] border border-white/70 shadow-lg transition-all duration-500 ${isActive && index === 0 ? 'scale-[1.03]' : ''
+                }`}
             >
               <img
                 src={image}
