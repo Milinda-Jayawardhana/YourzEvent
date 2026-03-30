@@ -114,13 +114,7 @@ const Events = () => {
       {selectedEvent && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-[rgba(35,25,18,0.32)] px-4 py-8 backdrop-blur-sm">
           <div className="relative max-h-[90vh] w-full max-w-5xl overflow-y-auto rounded-[2rem] border border-[#eadcca] bg-white p-6 shadow-[0_28px_80px_rgba(67,47,34,0.22)] lg:p-8">
-            <button
-              type="button"
-              onClick={() => setSelectedEventId('')}
-              className="absolute right-5 top-5 rounded-full border border-[#d6bda7] px-4 py-2 text-xs font-medium uppercase tracking-[0.18em] text-[#6b4d3f]"
-            >
-              Close
-            </button>
+
 
             <div className="flex flex-col gap-4 pr-20 sm:flex-row sm:items-start sm:justify-between">
               <div>
