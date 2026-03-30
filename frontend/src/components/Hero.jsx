@@ -1,36 +1,89 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const Hero = () => {
-  const sliderImages = ['/s1.jpeg', '/s2.jpeg', '/s3.jpeg']
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const slides = [
+    {
+      id: 'intro',
+      type: 'text',
+      eyebrow: 'Yourz Events',
+      title: 'Flowers, gifting, and event styling that deserve the spotlight.',
+      description:
+        'Step into a more curated floral experience with bouquet collections, gift-ready moments, and event styling crafted to feel memorable from the very first glance.'
+    },
+    { id: 's1', type: 'image', image: '/s1.jpeg' },
+    { id: 's2', type: 'image', image: '/s2.jpeg' },
+    { id: 's3', type: 'image', image: '/s3.jpeg' }
+  ]
+
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % sliderImages.length)
+      setCurrentSlideIndex((prev) => (prev + 1) % slides.length)
     }, 4000)
 
     return () => clearInterval(interval)
-  }, [sliderImages.length])
+  }, [slides.length])
 
   const goPrev = () => {
-    setCurrentImageIndex((prev) => (prev === 0 ? sliderImages.length - 1 : prev - 1))
+    setCurrentSlideIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1))
   }
 
   const goNext = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % sliderImages.length)
+    setCurrentSlideIndex((prev) => (prev + 1) % slides.length)
   }
 
   return (
     <div className='relative h-[350px] w-full overflow-hidden rounded-[2.25rem] border border-[#ead7c3] bg-[#fff8f1] sm:h-[400px] lg:h-[500px]'>
-      {sliderImages.map((image, index) => (
-        <img
-          key={image}
-          src={image}
-          alt="slide"
-          className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-in-out ${
-            index === currentImageIndex ? 'scale-100 opacity-100' : 'scale-105 opacity-0'
+      {slides.map((slide, index) => (
+        <div
+          key={slide.id}
+          className={`absolute inset-0 transition-all duration-700 ease-in-out ${
+            index === currentSlideIndex
+              ? 'pointer-events-auto scale-100 opacity-100'
+              : 'pointer-events-none scale-[1.03] opacity-0'
           }`}
-        />
+        >
+          {slide.type === 'text' ? (
+            <div className="relative flex h-full items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(255,252,248,1),_rgba(246,232,220,1)_52%,_rgba(234,213,196,1)_100%)] px-6 py-8 text-center sm:px-10">
+              <div className="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,_rgba(177,124,95,0.18)_0%,_rgba(177,124,95,0.05)_52%,_transparent_74%)]" />
+              <div className="absolute left-10 top-10 hidden h-20 w-20 rounded-[2rem] border border-white/70 bg-white/40 backdrop-blur-sm sm:block" />
+              <div className="absolute bottom-12 right-12 hidden h-16 w-16 rounded-full border border-[#d8b79e] bg-[#f3dfcf]/85 sm:block" />
+
+              <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center">
+                <p className="text-xs uppercase tracking-[0.45em] text-[#a06c51]">{slide.eyebrow}</p>
+                <h1 className="mt-5 max-w-4xl font-['Prata'] text-4xl leading-tight text-[#3f2d24] sm:text-5xl lg:text-6xl">
+                  {slide.title}
+                </h1>
+                <p className="mt-6 max-w-2xl text-sm leading-7 text-[#6f5648] sm:text-base">
+                  {slide.description}
+                </p>
+
+                <div className="mt-8 flex flex-wrap justify-center gap-3">
+                  <Link
+                    to="/services"
+                    className="rounded-full border border-[#6f4c3a] bg-[#6f4c3a] px-6 py-3 text-xs font-medium uppercase tracking-[0.2em] text-white transition-colors hover:border-[#543629] hover:bg-[#543629]"
+                  >
+                    Explore Services
+                  </Link>
+                  <Link
+                    to="/services/floral-arrangements/flower-bouquets"
+                    className="rounded-full border border-[#d6bda7] bg-white/80 px-6 py-3 text-xs font-medium uppercase tracking-[0.2em] text-[#6b4d3f] backdrop-blur-sm transition-colors hover:bg-white"
+                  >
+                    Shop Flowers
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <img
+              src={slide.image}
+              alt="slide"
+              className="h-full w-full object-cover"
+            />
+          )}
+        </div>
       ))}
 
       <button
@@ -50,14 +103,14 @@ const Hero = () => {
       </button>
 
       <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
-        {sliderImages.map((image, index) => (
+        {slides.map((slide, index) => (
           <button
-            key={image}
+            key={slide.id}
             type="button"
-            onClick={() => setCurrentImageIndex(index)}
+            onClick={() => setCurrentSlideIndex(index)}
             aria-label={`Go to slide ${index + 1}`}
             className={`h-3 w-3 rounded-full transition-all ${
-              currentImageIndex === index ? 'bg-white' : 'bg-[#f3e4d6] hover:bg-[#fffaf4]'
+              currentSlideIndex === index ? 'bg-white' : 'bg-[#f3e4d6] hover:bg-[#fffaf4]'
             }`}
           />
         ))}
