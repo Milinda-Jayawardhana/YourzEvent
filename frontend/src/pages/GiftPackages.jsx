@@ -31,8 +31,8 @@ const GiftPackages = () => {
         </div>
 
         <div className="grid grid-cols-2 gap-3">
-          <img src="/s4.jpeg" alt="Gift package" className="h-52 w-full rounded-[1.75rem] object-cover sm:h-72" />
-          <img src="/s6.jpeg" alt="Gift bouquet" className="h-52 w-full rounded-[1.75rem] object-cover sm:h-72" />
+          <img src="/g3.jpeg" alt="Gift package" className="h-52 w-full rounded-[1.75rem] object-cover sm:h-72" />
+          <img src="/g4.jpeg" alt="Gift bouquet" className="h-52 w-full rounded-[1.75rem] object-cover sm:h-72" />
         </div>
       </section>
 

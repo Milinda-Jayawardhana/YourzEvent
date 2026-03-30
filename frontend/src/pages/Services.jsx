@@ -11,7 +11,7 @@ const serviceCards = [
       { label: 'Flower Bouquets', to: '/services/floral-arrangements/flower-bouquets' },
       { label: 'Gift Items & Packages', to: '/services/floral-arrangements/gift-items-packages' }
     ],
-    images: ['/s1.jpeg', '/s2.jpeg', '/s3.jpeg', '/s4.jpeg']
+    images: ['/s1.jpeg', '/g1.jpeg', '/g2.jpeg', '/s4.jpeg']
   },
   {
     title: 'Events',
@@ -20,7 +20,7 @@ const serviceCards = [
     links: [
       { label: 'Explore Events', to: '/services/events' }
     ],
-    images: ['/s5.jpeg', '/s6.jpeg', '/s7.jpeg', '/s8.jpeg']
+    images: ['/e1.jpeg', '/e2.jpeg', '/e3.jpeg', '/e4.jpeg']
   }
 ];
 

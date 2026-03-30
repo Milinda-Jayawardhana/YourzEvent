@@ -1,21 +1,37 @@
+import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-const eventHighlights = [
-  {
-    title: 'Weddings & Proposals',
-    description: 'Romantic arches, bridal bouquets, aisle florals, and intimate proposal setups.'
-  },
-  {
-    title: 'Birthdays & Private Parties',
-    description: 'Statement flowers, table styling, welcome corners, and themed photo moments.'
-  },
-  {
-    title: 'Corporate & Brand Events',
-    description: 'Launch decor, lobby florals, gifting stations, and branded event styling.'
-  }
-];
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const Events = () => {
+  const [events, setEvents] = useState([]);
+  const [selectedEventId, setSelectedEventId] = useState('');
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await axios.get(`${backendUrl}/api/event/list`);
+        if (response.data.success) {
+          setEvents(response.data.events);
+        }
+      } catch (error) {
+        console.error('Failed to load events', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchEvents();
+  }, []);
+
+  const selectedEvent = useMemo(
+    () => events.find((item) => item._id === selectedEventId) || null,
+    [events, selectedEventId]
+  );
+  const heroEvent = selectedEvent || events[0] || null;
+
   return (
     <div className="pb-16 pt-8">
       <section className="grid gap-6 overflow-hidden rounded-[2.3rem] border border-[#eadfce] bg-[#fffaf4] p-6 shadow-[0_22px_60px_rgba(112,84,62,0.12)] lg:grid-cols-[1.1fr_0.9fr] lg:p-10">
@@ -25,7 +41,8 @@ const Events = () => {
             Floral styling for celebrations that deserve a full atmosphere.
           </h1>
           <p className="mt-5 max-w-xl text-sm leading-7 text-[#71584b] sm:text-base">
-            This is a frontend sample page for your events service. It shows how we can present event styling as a premium offering even before you add full booking functionality.
+            Browse event concepts added from the admin panel, open any card to see the full image set,
+            and send a booking inquiry when you find the style you want.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -45,19 +62,104 @@ const Events = () => {
         </div>
 
         <div className="grid grid-cols-2 gap-3">
-          <img src="/s9.jpeg" alt="Event flowers" className="h-44 w-full rounded-[1.5rem] object-cover sm:h-56" />
-          <img src="/s10.jpeg" alt="Event setup" className="h-44 w-full rounded-[1.5rem] object-cover sm:h-56" />
-          <img src="/s11.jpeg" alt="Celebration styling" className="col-span-2 h-52 w-full rounded-[1.75rem] object-cover sm:h-72" />
+          {(heroEvent?.images?.slice(0, 4) || ['/e2.jpeg', '/e3.jpeg', '/e4.jpeg', '/e2.jpeg']).map(
+            (image, index) => (
+              <img
+                key={`${image}-${index}`}
+                src={image}
+                alt={heroEvent ? `${heroEvent.title} ${index + 1}` : `Event inspiration ${index + 1}`}
+                className={`w-full rounded-[1.5rem] object-cover ${index === 3 ? 'col-span-2 h-52 sm:h-72' : 'h-44 sm:h-56'}`}
+              />
+            )
+          )}
         </div>
       </section>
 
-      <section className="mt-10 grid gap-4 md:grid-cols-3">
-        {eventHighlights.map((item) => (
-          <div key={item.title} className="rounded-[1.75rem] border border-[#eadcca] bg-white p-6">
-            <h2 className="font-['Prata'] text-2xl text-[#3f2d24]">{item.title}</h2>
-            <p className="mt-3 text-sm leading-7 text-[#705749]">{item.description}</p>
+      <section className="mt-10">
+        <div className="mb-5 flex items-center justify-between gap-4">
+          <div>
+            <p className="text-sm uppercase tracking-[0.35em] text-[#af7d60]">Event Concepts</p>
+            <h2 className="mt-2 font-['Prata'] text-3xl text-[#3f2d24]">Choose a style to explore</h2>
           </div>
-        ))}
+          {selectedEvent && (
+            <button
+              type="button"
+              onClick={() => setSelectedEventId('')}
+              className="rounded-full border border-[#d6bda7] px-5 py-3 text-xs font-medium uppercase tracking-[0.18em] text-[#6b4d3f]"
+            >
+              Go Back
+            </button>
+          )}
+        </div>
+
+        {loading ? (
+          <div className="rounded-[1.75rem] border border-[#eadcca] bg-white p-8 text-sm text-[#705749]">
+            Loading events...
+          </div>
+        ) : events.length === 0 ? (
+          <div className="rounded-[1.75rem] border border-dashed border-[#dcc8b3] bg-white p-8 text-sm text-[#705749]">
+            No events have been added yet.
+          </div>
+        ) : selectedEvent ? (
+          <div className="rounded-[2rem] border border-[#eadcca] bg-white p-6 shadow-[0_18px_45px_rgba(110,81,59,0.08)]">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <p className="text-sm uppercase tracking-[0.35em] text-[#b27b5d]">Selected Event</p>
+                <h3 className="mt-3 font-['Prata'] text-3xl text-[#3f2d24]">{selectedEvent.title}</h3>
+                <p className="mt-4 max-w-3xl text-sm leading-7 text-[#705749]">
+                  {selectedEvent.description}
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  to="/contact"
+                  className="rounded-full bg-[#4d3427] px-5 py-3 text-xs font-medium uppercase tracking-[0.18em] text-white"
+                >
+                  Book Event
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => setSelectedEventId('')}
+                  className="rounded-full border border-[#d6bda7] px-5 py-3 text-xs font-medium uppercase tracking-[0.18em] text-[#6b4d3f]"
+                >
+                  Back to Cards
+                </button>
+              </div>
+            </div>
+
+            <div className="mt-8 grid gap-4 md:grid-cols-2">
+              {selectedEvent.images.map((image, index) => (
+                <img
+                  key={`${selectedEvent._id}-${index}`}
+                  src={image}
+                  alt={`${selectedEvent.title} ${index + 1}`}
+                  className="h-64 w-full rounded-[1.5rem] object-cover"
+                />
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {events.map((item) => (
+              <button
+                key={item._id}
+                type="button"
+                onClick={() => setSelectedEventId(item._id)}
+                className="overflow-hidden rounded-[1.75rem] border border-[#eadcca] bg-white text-left shadow-[0_16px_40px_rgba(110,81,59,0.08)] transition hover:-translate-y-1"
+              >
+                <img
+                  src={item.images?.[0]}
+                  alt={item.title}
+                  className="h-56 w-full object-cover"
+                />
+                <div className="p-5">
+                  <h3 className="font-['Prata'] text-2xl text-[#3f2d24]">{item.title}</h3>
+                </div>
+              </button>
+            ))}
+          </div>
+        )}
       </section>
     </div>
   );

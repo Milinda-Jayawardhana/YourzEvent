@@ -11,6 +11,7 @@ import PackingOrders from './pages/PackingOrders'
 import DeliveredOrders from './pages/DeliveredOrders'
 import Edit from './pages/Edit';
 import Categories from './pages/Categories';
+import AddEvents from './pages/AddEvents';
 
 import Login from './components/Login'
 import { useState } from 'react'
@@ -49,6 +50,7 @@ const App = () => {
             <Route path ="/PackingOrders" element={<PackingOrders token={token}/>} />
             <Route path ="/DeliveredOrders" element={<DeliveredOrders token={token}/>} />
             <Route path ="/categories" element={<Categories token={token}/>} />
+            <Route path ="/events" element={<AddEvents token={token}/>} />
             <Route path ="/CancelledOrders" element={<CancelledOrders token={token}/>} />
             <Route path ="/edit/:id" element={<Edit token={token}/>} />
             <Route path="/" element={<Add token={token}/>} />
