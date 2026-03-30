@@ -30,11 +30,11 @@ const SlidingServiceCard = ({ card, isActive, onHover }) => {
   return (
     <div
       onMouseEnter={onHover}
-      className="group relative overflow-hidden rounded-[2rem] border border-[#e8ddcf] bg-[#fffaf4] p-6 shadow-[0_20px_60px_rgba(138,94,76,0.12)] transition-transform duration-300 hover:-translate-y-1"
+      className="group relative overflow-hidden rounded-[2rem] border border-[#e8ddcf] bg-[#fffaf4] px-6 py-8 shadow-[0_20px_60px_rgba(138,94,76,0.12)] transition-transform duration-300 hover:-translate-y-1 sm:px-8 sm:py-10 lg:px-10"
     >
       <div className="absolute inset-0 bg-gradient-to-br from-[#fff8f1] via-transparent to-[#f7ecdf]" />
-      <div className="relative z-10 flex h-full flex-col gap-6 lg:flex-row">
-        <div className="flex-1">
+      <div className="relative z-10 flex min-h-[420px] h-full flex-col gap-8 lg:flex-row lg:items-center">
+        <div className="flex flex-1 flex-col justify-center py-2 lg:py-6">
           <p className="text-xs uppercase tracking-[0.35em] text-[#b48363]">Our Services</p>
           <h2 className="mt-3 font-['Prata'] text-3xl text-[#3f2d24]">{card.title}</h2>
           <p className="mt-4 max-w-xl text-sm leading-7 text-[#72594a]">{card.description}</p>
@@ -45,7 +45,7 @@ const SlidingServiceCard = ({ card, isActive, onHover }) => {
                 <Link
                   key={link.to}
                   to={link.to}
-                  className="rounded-full border border-[#d9c5b1] bg-white px-5 py-3 text-xs font-medium uppercase tracking-[0.22em] text-[#6b4d3e] transition-colors hover:bg-[#f5e9dc]"
+                  className="rounded-full border border-[#6f4c3a] bg-[#6f4c3a] px-5 py-3 text-xs font-medium uppercase tracking-[0.22em] text-white transition-colors hover:border-[#543629] hover:bg-[#543629]"
                 >
                   {link.label}
                 </Link>
@@ -57,7 +57,7 @@ const SlidingServiceCard = ({ card, isActive, onHover }) => {
                 <Link
                   key={link.to}
                   to={link.to}
-                  className="rounded-full border border-[#d9c5b1] bg-white px-5 py-3 text-xs font-medium uppercase tracking-[0.22em] text-[#6b4d3e] transition-colors hover:bg-[#f5e9dc]"
+                  className="rounded-full border border-[#6f4c3a] bg-[#6f4c3a] px-5 py-3 text-xs font-medium uppercase tracking-[0.22em] text-white transition-colors hover:border-[#543629] hover:bg-[#543629]"
                 >
                   {link.label}
                 </Link>
@@ -66,7 +66,7 @@ const SlidingServiceCard = ({ card, isActive, onHover }) => {
           )}
         </div>
 
-        <div className="grid flex-1 grid-cols-2 gap-3">
+        <div className="grid flex-1 grid-cols-2 gap-3 lg:self-center">
           {card.images.map((image, index) => (
             <div
               key={image}
@@ -100,9 +100,12 @@ const Services = () => {
 
   return (
     <div className="pb-16 pt-8">
-      <section className="overflow-hidden rounded-[2.5rem] border border-[#efe3d5] bg-[radial-gradient(circle_at_top_left,_rgba(255,250,244,1),_rgba(247,235,220,1)_55%,_rgba(242,223,206,1)_100%)] px-6 py-12 sm:px-10 lg:px-14">
+      <section className="relative overflow-hidden rounded-[2.5rem] border border-[#efe3d5] bg-[radial-gradient(circle_at_top_left,_rgba(255,250,244,1),_rgba(247,235,220,1)_55%,_rgba(242,223,206,1)_100%)] px-6 py-12 sm:px-10 lg:px-14">
+        <div className="pointer-events-none absolute right-[-4rem] top-1/2 hidden h-64 w-64 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,_rgba(177,124,95,0.18)_0%,_rgba(177,124,95,0.07)_46%,_transparent_72%)] lg:block" />
+        <div className="pointer-events-none absolute right-20 top-16 hidden h-24 w-24 rotate-12 rounded-[2rem] border border-white/70 bg-white/35 shadow-[0_12px_30px_rgba(141,101,79,0.08)] backdrop-blur-sm lg:block" />
+        <div className="pointer-events-none absolute bottom-10 right-32 hidden h-14 w-14 rounded-full border border-[#d8b79e] bg-[#f3dfcf]/90 shadow-[0_10px_24px_rgba(141,101,79,0.08)] lg:block" />
         <p className="text-sm uppercase tracking-[0.4em] text-[#ad7a5f]">Our Services</p>
-        <div className="mt-5 max-w-3xl">
+        <div className="relative z-10 mt-5 max-w-3xl lg:max-w-[60rem] lg:pr-40">
           <h1 className="font-['Prata'] text-4xl leading-tight text-[#3f2d24] sm:text-5xl">
             Floral stories crafted for gifting moments and unforgettable events.
           </h1>
