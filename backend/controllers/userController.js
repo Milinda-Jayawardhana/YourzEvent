@@ -7,6 +7,22 @@ const createToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET);
 };
 
+const getUserProfile = async (req, res) => {
+  try {
+    const { userId } = req.body;
+    const user = await userModel.findById(userId).select("name email");
+
+    if (!user) {
+      return res.json({ success: false, message: "User not found" });
+    }
+
+    res.json({ success: true, user });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
+};
+
 // Login user
 const loginUser = async (req, res) => {
   try {
@@ -134,4 +150,4 @@ const resetPassword = async (req, res) => {
   }
 };
 
-export { loginUser, registerUser, adminLogin, resetPassword };
+export { loginUser, registerUser, adminLogin, resetPassword, getUserProfile };

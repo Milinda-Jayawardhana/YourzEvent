@@ -12,6 +12,7 @@ import Product from './pages/Product'
 import Cart from './pages/Cart'
 import PlaceOrder from './pages/PlaceOrder'
 import Orders from './pages/Orders'
+import Profile from './pages/Profile'
 import Login from './pages/Login'
 import About from './pages/About'
 import WhatsAppFloat from './components/WhatsappFloat'
@@ -45,6 +46,7 @@ const App = () => {
             <Route path='/place-order' element={<PlaceOrder/>} />
             <Route path='/cart' element={<Cart/>} />
             <Route path='/orders' element={<Orders/>} />
+            <Route path='/profile' element={<Profile/>} />
             <Route path='/terms-and-conditions' element={<Terms/>} />
             <Route path='/privacy-and-policy' element={<Policy/>} />
             <Route path='/return-policy' element={<Returns/>} />               

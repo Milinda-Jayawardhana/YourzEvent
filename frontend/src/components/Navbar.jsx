@@ -12,7 +12,8 @@ const Navbar = () => {
     navigate,
     token,
     setToken,
-    setCartItems
+    setCartItems,
+    userProfile
   } = useContext(ShopContext);
 
   const logout = () => {
@@ -106,29 +107,39 @@ const Navbar = () => {
             />
 
             {token && (
-              <div className="absolute right-0 top-6 z-10 hidden transition-all duration-150 ease-in-out group-hover:block hover:block">
-                <div className="flex w-36 flex-col gap-2 rounded bg-slate-100 px-5 py-3 text-gray-500 shadow-md">
-                  <p className="cursor-pointer hover:text-black" onClick={(e) => e.stopPropagation()}>
-                    My Profile
-                  </p>
-                  <p
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      navigate('/orders');
-                    }}
-                    className="cursor-pointer hover:text-black"
-                  >
-                    Orders
-                  </p>
-                  <p
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      logout();
-                    }}
-                    className="cursor-pointer hover:text-black"
-                  >
-                    Login/Logout
-                  </p>
+              <div className="absolute right-0 top-6 z-10 hidden pt-3 transition-all duration-150 ease-in-out group-hover:block hover:block">
+                <div className="w-64 rounded-[1.25rem] border border-[#eadbca] bg-white p-4 text-[#6a5142] shadow-[0_20px_50px_rgba(101,73,56,0.15)]">
+                  <div className="border-b border-[#f0e4d7] pb-3">
+                    <p className="text-sm font-semibold text-[#3f2d24]">
+                      {userProfile?.name || 'My Account'}
+                    </p>
+                    <p className="mt-1 text-xs text-[#8d6d5b]">
+                      {userProfile?.email || 'Signed in'}
+                    </p>
+                  </div>
+
+                  <div className="mt-3 flex flex-col gap-1 text-sm">
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        navigate('/profile');
+                      }}
+                      className="rounded-xl px-3 py-2 text-left transition-colors hover:bg-[#fcf3ea] hover:text-[#3f2d24]"
+                    >
+                      My Profile
+                    </button>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        logout();
+                      }}
+                      className="rounded-xl px-3 py-2 text-left transition-colors hover:bg-[#fcf3ea] hover:text-[#3f2d24]"
+                    >
+                      Logout
+                    </button>
+                  </div>
                 </div>
               </div>
             )}
