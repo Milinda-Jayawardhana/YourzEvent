@@ -7,7 +7,7 @@ const Hero = () => {
       id: 'intro',
       type: 'text',
       eyebrow: 'Yourz Events',
-      title: 'Flowers, gifting, and event styling that deserve the spotlight.',
+      title: 'Flowers, Gifting, and Event Styling that Deserve the Spotlight.',
       description:
         'Step into a more curated floral experience with bouquet collections, gift-ready moments, and event styling crafted to feel memorable from the very first glance.'
     },
