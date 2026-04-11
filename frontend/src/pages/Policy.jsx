@@ -63,10 +63,10 @@ const Policy = () => {
         {/* 1. Overview */}
         <Section id="intro" title="1. Overview">
           <p>
-            At <strong>mechatronic.lk</strong>, your privacy is our top priority.
+            At <strong>YourzEvents</strong>, your privacy is our top priority.
             This Privacy Policy explains how we collect, use, and protect your
-            information when you shop for electronic components, sensors,
-            modules, tools, and other engineering products on our website.
+            information when you shop for floral arrangements, gift packages,
+            and event services on our website.
           </p>
           <p>
             By accessing or using our services, you agree to the terms of this
@@ -93,7 +93,7 @@ const Policy = () => {
             </li>
             <li>
               <strong>Order history:</strong> Products purchased, warranty
-              claims, return requests, and customer support communication.
+              requests, return requests, and customer support communication.
             </li>
           </ul>
         </Section>
@@ -103,8 +103,8 @@ const Policy = () => {
           <ul className="list-disc pl-5 space-y-2">
             <li>To process orders, arrange delivery, and verify payments.</li>
             <li>
-              To provide technical support related to electronic components,
-              modules, and devices.
+              To provide support related to bouquet orders, gift customizations,
+              and event styling requests.
             </li>
             <li>
               To recommend products, promotions, or restocks based on your
@@ -115,7 +115,7 @@ const Policy = () => {
             </li>
             <li>
               To detect fraudulent transactions and protect against misuse of
-              high-value electronic items.
+              our website and services.
             </li>
           </ul>
         </Section>
@@ -129,7 +129,7 @@ const Policy = () => {
             </li>
             <li>
               <strong>Logistics partners:</strong> Shipping carriers receive
-              your delivery details to deliver your electronics safely.
+              your delivery details to deliver your orders safely.
             </li>
             <li>
               <strong>Payment processors:</strong> Banks and verified payment
@@ -159,8 +159,8 @@ const Policy = () => {
         <Section id="cookies" title="6. Cookies & Tracking Technologies">
           <p>
             We use cookies to store preferences, improve site performance,
-            analyze product demand (such as popular sensors, microcontrollers,
-            and modules), and enhance your overall shopping experience.
+            analyze product and service demand (such as popular bouquets,
+            gift packages, and event themes), and enhance your overall shopping experience.
           </p>
           <p>
             You may disable cookies through your browser settings, but some site
@@ -184,8 +184,8 @@ const Policy = () => {
             our support team:
           </p>
           <ul className="list-disc pl-5 mt-2 space-y-1">
-            <li>Email: mechatroniclk@gmail.com</li>
-            <li>Phone: +94 72 615 1400</li>
+            <li>Email: yourzevents1@gmail.com</li>
+            <li>Phone: +971 58 304 8569</li>
             <li>Live Chat: Available during 24 hours</li>
           </ul>
         </Section>
@@ -196,7 +196,7 @@ const Policy = () => {
         <div className="text-[#414141]">
           <div className="flex items-center gap-2 justify-center">
             <p className="w-8 md:w-11 h-[1px] bg-[#414141]"></p>
-            <p className="font-medium text-sm md:text-base">© 2025 MECHATRONICLK</p>
+            <p className="font-medium text-sm md:text-base">© 2026 YOURZEVENTS</p>
             <p className="w-8 md:w-11 h-[1px] bg-[#414141]"></p>
           </div>
           <p className="text-center text-sm mt-2">All rights reserved.</p>

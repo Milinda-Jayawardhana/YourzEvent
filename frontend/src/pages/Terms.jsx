@@ -69,17 +69,17 @@ const Terms = () => {
         {/* Terms of Use */}
         <Section id="terms" title="1. Terms of Use">
           <p>By accessing this Website and/or using our e-commerce service (“Service”), you agree to comply with these Terms and all policies/notices on the Website.</p>
-          <p className="mt-2">If you disagree with any part of these Terms, you must stop using the Website immediately. MechatronicLK may update or modify these Terms at any time, and you are responsible for reviewing them regularly.</p>
+          <p className="mt-2">If you disagree with any part of these Terms, you must stop using the Website immediately. YourzEvents may update or modify these Terms at any time, and you are responsible for reviewing them regularly.</p>
           <h3 className="font-semibold mt-6 mb-2 text-[#414141]">General Conditions</h3>
-          <p>We reserve the right to refuse service to anyone for any reason. Prices, stock availability, and product details may change without notice. We may discontinue any product at any time.</p>
+          <p>We reserve the right to refuse service to anyone for any reason. Prices, availability, and service details may change without notice. We may discontinue any listed product or service at any time.</p>
         </Section>
 
         {/* Product Information */}
         <Section id="product" title="2. Product Information">
-          <p>All electronic components, modules, tools, and accessories displayed on the Website are subject to availability. If an item is unavailable after ordering, we will notify you and issue a refund.</p>
-          <p className="mt-2">Products shown online may not always be available in physical stock. MechatronicLK does not guarantee availability at all times.</p>
-          <p className="mt-2">Images are for illustration only. The actual product may vary slightly due to manufacturer updates or color differences.</p>
-          <p className="mt-2">Electronic components require proper handling. Damage caused by incorrect usage, improper wiring, reverse polarity, overvoltage, overheating, or poor soldering does not qualify as a manufacturing defect and is not covered under warranty.</p>
+          <p>All floral products, gift packages, and event styling services displayed on the Website are subject to availability. If an item or slot is unavailable after ordering, we will notify you and issue a refund where applicable.</p>
+          <p className="mt-2">Products shown online may not always be available in immediate stock. YourzEvents does not guarantee availability at all times.</p>
+          <p className="mt-2">Images are for illustration only. Flower tones, wrapping, and decorative details may vary slightly based on seasonal and supplier availability.</p>
+          <p className="mt-2">Event mood boards and portfolio images are provided as style references. Final setups may vary based on venue conditions, logistics, and client-approved requirements.</p>
         </Section>
 
         {/* Placing an Order */}
@@ -103,14 +103,14 @@ const Terms = () => {
 
         {/* Warranty and Liability */}
         <Section id="warranty" title="6. Warranties; Limitation of Liability">
-          <p>All products are sold “as is” unless a specific warranty is stated. Electronic components require correct usage and handling.</p>
-          <p className="mt-2">MechatronicLK is not liable for damages caused by improper installation, short circuits, incorrect voltage, misuse, or modifications.</p>
+          <p>All products and services are provided “as is” unless a specific guarantee is stated in writing.</p>
+          <p className="mt-2">YourzEvents is not liable for delays or damages caused by incorrect recipient details, customer-requested last-minute changes, venue restrictions, or third-party service failures.</p>
           <p className="mt-2">Your use of the Website and products is at your own risk. We are not responsible for indirect or consequential damages.</p>
         </Section>
 
         {/* Indemnification */}
         <Section id="indemnification" title="7. Indemnification">
-          <p>You agree to indemnify and hold MechatronicLK and its affiliates harmless from any claims arising from your misuse of the Website or violation of these Terms.</p>
+          <p>You agree to indemnify and hold YourzEvents and its affiliates harmless from any claims arising from your misuse of the Website or violation of these Terms.</p>
         </Section>
 
         {/* Force Majeure */}
@@ -125,7 +125,7 @@ const Terms = () => {
 
         {/* Intellectual Property */}
         <Section id="intellectual" title="10. Intellectual Property">
-          <p>All Website content, including images, product descriptions, and branding, belongs to MechatronicLK and is protected by copyright laws.</p>
+          <p>All Website content, including images, product descriptions, event concepts, and branding, belongs to YourzEvents and is protected by copyright laws.</p>
         </Section>
 
         {/* Privacy */}
@@ -140,7 +140,7 @@ const Terms = () => {
 
         {/* Jurisdiction */}
         <Section id="jurisdiction" title="13. Jurisdiction and Governing Law">
-          <p>All disputes are governed by Sri Lankan law and fall under the jurisdiction of Sri Lankan courts.</p>
+          <p>All disputes are governed by the laws of the United Arab Emirates and fall under the jurisdiction of UAE courts.</p>
         </Section>
       </div>
 
@@ -149,7 +149,7 @@ const Terms = () => {
         <div className="text-[#414141]">
           <div className="flex items-center gap-2 justify-center">
             <p className="w-8 md:w-11 h-[1px] bg-[#414141]"></p>
-            <p className="font-medium text-sm md:text-base">© 2025 MECHATRONICLK</p>
+            <p className="font-medium text-sm md:text-base">© 2026 YOURZEVENTS</p>
             <p className="w-8 md:w-11 h-[1px] bg-[#414141]"></p>
           </div>
           <p className="text-center text-sm mt-2">All rights reserved.</p>

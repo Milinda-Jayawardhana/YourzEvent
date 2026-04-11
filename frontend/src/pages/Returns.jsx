@@ -62,8 +62,8 @@ const Returns = () => {
         
         {/* 1. Returns */}
         <Section id="returns" title="1. Returns">
-          <p>We accept returns within <strong>7 days</strong> of your purchase date. Returned electronic items must be unused, in original condition, and include <strong>all accessories, cables, manuals, warranty cards, and original packaging</strong>.</p>
-          <p>Items showing signs of installation, tampering, or physical damage caused by misuse will not be eligible for return.</p>
+          <p>We accept return requests within <strong>24 hours</strong> of delivery for eligible non-perishable items such as gift accessories. Items must be unused, in original condition, and in original packaging.</p>
+          <p>Fresh flower bouquets and custom floral arrangements are time-sensitive and are generally not returnable once delivered, except in approved quality issue cases.</p>
         </Section>
 
         {/* 2. Refunds */}
@@ -72,37 +72,37 @@ const Returns = () => {
           <p>Refunds exclude:</p>
           <ul className="list-disc pl-5">
             <li>Initial shipping costs</li>
-            <li>Installation or configuration fees (if applicable)</li>
+            <li>Rush delivery, custom design, or setup fees (if applicable)</li>
           </ul>
         </Section>
 
         {/* 3. Exchanges */}
         <Section id="exchanges" title="3. Exchanges">
-          <p>If you received a <strong>wrong item, wrong model, wrong specification, or a defective product</strong>, please contact our support team within <strong>3 days</strong> of receiving your order.</p>
-          <p>We will guide you through testing and the exchange process.</p>
+          <p>If you received a <strong>wrong item, incomplete order, or visibly damaged product</strong>, please contact our support team within <strong>24 hours</strong> of receiving your order.</p>
+          <p>We will review your request and guide you through the replacement or exchange process where eligible.</p>
         </Section>
 
         {/* 4. Non-Returnable Items */}
         <Section id="nonReturnable" title="4. Non-Returnable Items">
           <ul className="list-disc pl-5 space-y-1">
-            <li>Software, license keys, activation codes</li>
-            <li>Earphones, earbuds, or headphones (hygiene rules)</li>
-            <li>Opened microcontrollers, modules, ICs, and sensors</li>
-            <li>Products with missing accessories or broken seals</li>
-            <li>Items damaged due to incorrect wiring or improper use</li>
+            <li>Fresh flowers and perishable floral products after delivery</li>
+            <li>Customized bouquets or personalized gift packages</li>
+            <li>Completed event styling and decor services</li>
+            <li>Products with missing accessories, tags, or damaged packaging</li>
+            <li>Items damaged due to improper handling after delivery</li>
           </ul>
         </Section>
 
         {/* 5. Damaged or Defective Items */}
         <Section id="damaged" title="5. Damaged or Defective Items">
-          <p>If your product arrives damaged, defective, or dead on arrival (DOA), contact us within <strong>48 hours</strong> with photos or videos for verification.</p>
+          <p>If your order arrives damaged, defective, or incorrect, contact us within <strong>24 hours</strong> with photos or videos for verification.</p>
           <p>After review, we may offer:</p>
           <ul className="list-disc pl-5 space-y-1">
-            <li>A replacement unit</li>
+            <li>A replacement item</li>
             <li>Store credit</li>
             <li>A full or partial refund</li>
           </ul>
-          <p>Damage caused by incorrect wiring, soldering, modification, or mishandling is <strong>not covered</strong>.</p>
+          <p>Damage caused by incorrect storage, late recipient availability, or mishandling after delivery is <strong>not covered</strong>.</p>
         </Section>
 
         {/* 6. Return Shipping */}
@@ -118,16 +118,16 @@ const Returns = () => {
 
         {/* 7. Processing Time */}
         <Section id="processing" title="7. Processing Time">
-          <p>Returns, exchanges, and refunds are processed within <strong>3–7 business days</strong> after we receive the returned item.</p>
+          <p>Returns, exchanges, and refunds are processed within <strong>3-7 business days</strong> after we receive and verify the returned item.</p>
           <p>Refund clearance times may vary depending on your bank or payment provider.</p>
         </Section>
 
         {/* 8. Contact */}
         <Section id="contact" title="8. Contact Us">
-          <p>If you need help with a return, exchange, or warranty claim, our support team is available:</p>
+          <p>If you need help with a return, exchange, or refund request, our support team is available:</p>
           <ul className="list-disc pl-5 mt-2 space-y-1">
-            <li>Email: mechatroniclk@gmail.com</li>
-            <li>Phone: +94 72 615 1400</li>
+            <li>Email: yourzevents1@gmail.com</li>
+            <li>Phone: +971 58 304 8569</li>
             <li>Live Chat: Available on our website during business hours</li>
           </ul>
         </Section>
@@ -139,7 +139,7 @@ const Returns = () => {
         <div className="text-[#414141]">
           <div className="flex items-center gap-2 justify-center">
             <p className="w-8 md:w-11 h-[1px] bg-[#414141]"></p>
-            <p className="font-medium text-sm md:text-base">© 2025 OGEE ERA</p>
+            <p className="font-medium text-sm md:text-base">© 2026 YOURZEVENTS</p>
             <p className="w-8 md:w-11 h-[1px] bg-[#414141]"></p>
           </div>
           <p className="text-center text-sm mt-2">All rights reserved.</p>
