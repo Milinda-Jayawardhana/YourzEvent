@@ -36,6 +36,15 @@ const socialLinks = [
     )
   },
   {
+    href: 'https://www.linkedin.com/company/yourzbyjayevents/',
+    label: 'LinkedIn',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.9-2 3.9-2 4.2 0 5 2.8 5 6.4V21h-4v-5.1c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21H9z" />
+      </svg>
+    )
+  },
+  {
     href: 'https://www.tiktok.com/@yourz.events?_r=1&_t=ZN-93FbDOu8FaY',
     label: 'TikTok',
     icon: (
@@ -70,7 +79,7 @@ const Footer = () => {
     <footer className='mt-12 rounded-t-[2.25rem] border border-[#ead7c3] bg-[linear-gradient(180deg,rgba(255,250,244,0.92),rgba(243,228,214,0.92))] px-5 pt-6 sm:px-6'>
       <div className='grid gap-6 border-b border-[#d9c5b1] pb-5 sm:grid-cols-[1.4fr_1fr_1fr] sm:gap-8'>
         <div className='pr-0 sm:pr-8'>
-          <img src="/logo.jpeg" alt="Logo" className='mb-3 w-24' />
+          <img src="/logopng.png" alt="Logo" className='mb-3 w-24' />
           <p className='text-sm leading-6 theme-section-copy'>
             Blooming Emotions, One Bouquet at a Time.
           </p>

@@ -218,10 +218,14 @@ const Contact = () => {
                   <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                 </svg>
               </a>
+              <a href="https://www.linkedin.com/company/yourzbyjayevents/" target="_blank" rel="noopener noreferrer" className={socialButtonClass}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="text-[#6f5648]">
+                  <path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.9-2 3.9-2 4.2 0 5 2.8 5 6.4V21h-4v-5.1c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21H9z" />
+                </svg>
+              </a>
               <a href="https://www.tiktok.com/@yourz.events?_r=1&_t=ZN-93FbDOu8FaY" target="_blank" rel="noopener noreferrer" className={socialButtonClass}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48" fill="none" className="text-[#6f5648]">
-                  <path d="M32 12h-4v16.8c0 2.2.8 4.2 2.2 5.8 1.5 1.7 3.6 2.6 5.8 2.6 4.4 0 8-3.6 8-8V22h-4v6.6c0 2.2-1.8 4-4 4-1.1 0-2.1-.4-2.9-1.1-1.7-1.4-2.9-3.5-2.9-5.9V12z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M24 24c-4.4 0-8-3.6-8-8s3.6-8 8-8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 448 512" fill="currentColor" className="text-[#6f5648]">
+                  <path d="M448 209.9a210.1 210.1 0 0 1-122.8-39.2v178.7a162.6 162.6 0 1 1-141.1-161.5v89.3a74.6 74.6 0 1 0 52.2 71.2V0h88a121.2 121.2 0 0 0 1.9 22.2 122.2 122.2 0 0 0 54.2 80.5A121.4 121.4 0 0 0 448 124z" />
                 </svg>
               </a>
               <a href="https://youtube.com/@yourzevents?si=eGgFt-O_hyB3A9II" target="_blank" rel="noopener noreferrer" className={socialButtonClass}>
