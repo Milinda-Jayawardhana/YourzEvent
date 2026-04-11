@@ -19,7 +19,7 @@ import { useEffect } from 'react';
 import CancelledOrders from './pages/CancelledOrders';
 
 export const backendUrl = import.meta.env.VITE_BACKEND_URL
-export const currency ='Rs'
+export const currency ='AED '
 
 
 

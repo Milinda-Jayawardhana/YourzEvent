@@ -4,6 +4,14 @@ import PropTypes from 'prop-types';
 
 const serviceCards = [
   {
+    title: 'Events',
+    description:
+      'We create bespoke event decor and styling for weddings, engagements, private celebrations, and corporate occasions. From sophisticated floral arrangements and stunning stage designs to themed concepts and brand launches, every element is carefully curated to reflect your vision. Whether it is an intimate gathering or a large-scale event, we deliver elegant, memorable experiences with exceptional attention to detail.', links: [
+        { label: 'Explore Events', to: '/services/events' }
+      ],
+    images: ['/e1.jpeg', '/e2.jpeg', '/e3.jpeg', '/e4.jpeg']
+  },
+  {
     title: 'Floral Arrangements',
     description:
       'Discover our bespoke floral creations, including luxury bouquets, bridal florals, elegant centerpieces, and decorative installations. From intimate gifts to large-scale event styling, each arrangement is thoughtfully designed using premium blooms and refined artistry to deliver beauty, elegance, and a memorable experience.', links: [
@@ -11,14 +19,6 @@ const serviceCards = [
         { label: 'Gift Items & Packages', to: '/services/floral-arrangements/gift-items-packages' }
       ],
     images: ['/s1.jpeg', '/g1.jpeg', '/g2.jpeg', '/s4.jpeg']
-  },
-  {
-    title: 'Events',
-    description:
-      'We create bespoke event décor and styling for weddings, engagements, private celebrations, and corporate occasions. From sophisticated floral arrangements and stunning stage designs to themed concepts and brand launches, every element is carefully curated to reflect your vision. Whether it’s an intimate gathering or a large-scale event, we deliver elegant, memorable experiences with exceptional attention to detail.', links: [
-        { label: 'Explore Events', to: '/services/events' }
-      ],
-    images: ['/e1.jpeg', '/e2.jpeg', '/e3.jpeg', '/e4.jpeg']
   }
 ];
 

@@ -17,7 +17,7 @@ export const sendOrderConfirmationEmail = async ({ to, orderId, items, amount, a
     <tr style="background-color: #f2f2f2;">
       <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Item</th>
       <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Quantity</th>
-      <th style="border: 1px solid #ddd; padding: 8px; text-align: right;">Price Rs:</th>
+      <th style="border: 1px solid #ddd; padding: 8px; text-align: right;">Price (AED):</th>
     </tr>
     </thead>
     <tbody>
@@ -58,7 +58,7 @@ Phone: ${address.phone}
       <div style="background-color: #f5f5f5; padding: 15px; border-radius: 5px; margin: 20px 0;">
       <p style="margin: 5px 0;"><b>Order ID:</b> ${orderId}</p>
       <p style="margin: 5px 0;"><b>Payment Method:</b> ${paymentMethod}</p>
-      <p style="margin: 5px 0;"><b>Total Amount:</b> Rs. ${amount}</p>
+      <p style="margin: 5px 0;"><b>Total Amount:</b> AED ${amount}</p>
       </div>
       
       <h3 style="color: #333;">Items:</h3>
