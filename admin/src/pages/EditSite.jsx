@@ -50,6 +50,14 @@ const EditSite = ({ token }) => {
     setSelectedFiles(files);
   };
 
+  const removeSelectedFile = (targetFile) => {
+    setSelectedFiles((prev) =>
+      prev.filter(
+        (file) => !(file.name === targetFile.name && file.lastModified === targetFile.lastModified)
+      )
+    );
+  };
+
   const uploadImages = async (event) => {
     event.preventDefault();
 
@@ -187,8 +195,19 @@ const EditSite = ({ token }) => {
             </p>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {previewUrls.map(({ file, url }) => (
-                <div key={`${file.name}-${file.lastModified}`} className="overflow-hidden rounded-xl border border-gray-200">
+                <div
+                  key={`${file.name}-${file.lastModified}`}
+                  className="relative overflow-hidden rounded-xl border border-gray-200"
+                >
                   <img src={url} alt={file.name} className="h-36 w-full object-cover" />
+                  <button
+                    type="button"
+                    onClick={() => removeSelectedFile(file)}
+                    className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/75 text-sm font-semibold text-white transition hover:bg-black"
+                    aria-label={`Remove ${file.name}`}
+                  >
+                    ×
+                  </button>
                   <div className="p-3 text-xs text-gray-500">{file.name}</div>
                 </div>
               ))}
