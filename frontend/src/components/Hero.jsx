@@ -37,7 +37,7 @@ const Hero = () => {
       image: item.image
     }))
 
-    const imageSlides = isSettingsLoaded
+    const imageSlides = isSettingsLoaded && dynamicImageSlides.length
       ? dynamicImageSlides
       : defaultImageSlides
 
