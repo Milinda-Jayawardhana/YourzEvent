@@ -1,24 +1,85 @@
-import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { useContext, useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { ShopContext } from '../context/ShopContext'
 
 const Hero = () => {
-  const slides = [
-    {
+  const { backendUrl } = useContext(ShopContext)
+  const [heroImages, setHeroImages] = useState([])
+  const [showTextSlide, setShowTextSlide] = useState(true)
+  const [isSettingsLoaded, setIsSettingsLoaded] = useState(false)
+
+  const defaultImageSlides = useMemo(
+    () => [
+      { id: 's1', type: 'image', image: '/s1.jpeg' },
+      { id: 's2', type: 'image', image: '/s2.jpeg' },
+      { id: 's3', type: 'image', image: '/s3.jpeg' }
+    ],
+    []
+  )
+
+  const textSlide = useMemo(
+    () => ({
       id: 'intro',
       type: 'text',
       eyebrow: 'Yourz Events',
       title: 'Flowers, Gifting, and Event Styling that Deserve the Spotlight.',
       description:
         'Step into a more curated floral experience with bouquet collections, gift-ready moments, and event styling crafted to feel memorable from the very first glance.'
-    },
-    { id: 's1', type: 'image', image: '/s1.jpeg' },
-    { id: 's2', type: 'image', image: '/s2.jpeg' },
-    { id: 's3', type: 'image', image: '/s3.jpeg' }
-  ]
+    }),
+    []
+  )
+
+  const slides = useMemo(() => {
+    const dynamicImageSlides = heroImages.map((item) => ({
+      id: item._id,
+      type: 'image',
+      image: item.image
+    }))
+
+    const imageSlides = isSettingsLoaded
+      ? dynamicImageSlides
+      : defaultImageSlides
+
+    const finalSlides = []
+
+    if (showTextSlide) {
+      finalSlides.push(textSlide)
+    }
+
+    if (imageSlides.length) {
+      finalSlides.push(...imageSlides)
+    }
+
+    return finalSlides
+  }, [defaultImageSlides, heroImages, isSettingsLoaded, showTextSlide, textSlide])
 
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
 
   useEffect(() => {
+    const fetchHeroSettings = async () => {
+      try {
+        const response = await axios.get(`${backendUrl}/api/site-settings/hero`)
+
+        if (response.data.success) {
+          setHeroImages(response.data.heroImages || [])
+          setShowTextSlide(response.data.showTextSlide ?? true)
+        }
+      } catch (error) {
+        console.log(error)
+      } finally {
+        setIsSettingsLoaded(true)
+      }
+    }
+
+    fetchHeroSettings()
+  }, [backendUrl])
+
+  useEffect(() => {
+    if (!slides.length) {
+      return undefined
+    }
+
     const interval = setInterval(() => {
       setCurrentSlideIndex((prev) => (prev + 1) % slides.length)
     }, 4000)
@@ -26,12 +87,35 @@ const Hero = () => {
     return () => clearInterval(interval)
   }, [slides.length])
 
+  useEffect(() => {
+    if (currentSlideIndex > slides.length - 1) {
+      setCurrentSlideIndex(0)
+    }
+  }, [currentSlideIndex, slides.length])
+
   const goPrev = () => {
+    if (!slides.length) return
     setCurrentSlideIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1))
   }
 
   const goNext = () => {
+    if (!slides.length) return
     setCurrentSlideIndex((prev) => (prev + 1) % slides.length)
+  }
+
+  if (!slides.length) {
+    return (
+      <div className='relative flex h-[430px] w-full items-center justify-center overflow-hidden rounded-[2.25rem] border border-[#ead7c3] bg-[#fff8f1] px-6 text-center sm:h-[480px] lg:h-[500px]'>
+        <div>
+          <p className='text-[11px] uppercase tracking-[0.35em] text-[#a06c51] sm:text-xs sm:tracking-[0.45em]'>
+            Yourz Events
+          </p>
+          <p className='mt-4 font-["Prata"] text-2xl text-[#3f2d24] sm:text-4xl'>
+            No home slider items are available right now.
+          </p>
+        </div>
+      </div>
+    )
   }
 
   return (

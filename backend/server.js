@@ -8,6 +8,7 @@ import productRouter from './routes/productRoute.js';
 import cartRouter from './routes/cartRoute.js';
 import categoryRouter from './routes/categoryRoute.js';
 import eventRouter from './routes/eventRoute.js';
+import siteSettingsRouter from './routes/siteSettingsRoute.js';
 
 import orderRouter from './routes/orderRoute.js';
 
@@ -28,6 +29,7 @@ app.use('/api/category', categoryRouter)
 app.use('/api/event', eventRouter)
 app.use('/api/cart', cartRouter)
 app.use('/api/order', orderRouter)
+app.use('/api/site-settings', siteSettingsRouter)
 
 app.get('/', (req, res) => {
     res.send('API Working')
